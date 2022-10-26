@@ -1,0 +1,30 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "16"
+        }
+      },
+    ],
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "contracts": "./src/contracts",
+          "infra": "./src/infra",
+          "usecases": "./src/usecases",
+          "services": "./src/services",
+          "controllers": "./src/controllers",
+          "entities": "./src/entities",
+          "common": "./src/common"
+        },
+        "cwd": "babelrc"
+      }
+    ]
+  ]
+}
