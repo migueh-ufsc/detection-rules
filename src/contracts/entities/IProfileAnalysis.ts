@@ -16,6 +16,7 @@
  *
  */
 export interface IProfileAnalysis {
+  profileData: string; //id do ProfileData no banco
   accountType?: AccountType;
   followerToFollowingRatioScore?: number;
   retweetToReplyToTweetRatioScore?: number;
