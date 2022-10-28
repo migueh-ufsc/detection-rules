@@ -2,11 +2,15 @@ import {
   AccountType,
   IProfileAnalysis,
 } from 'contracts/entities/IProfileAnalysis';
-import { model, Schema } from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 import { schemaOptions } from '../SchemaOptions';
 
 export const ProfileAnalysisSchema = new Schema<IProfileAnalysis>(
   {
+    profileData: {
+      type: Types.ObjectId,
+      ref: 'ProfileData',
+    },
     accountType: {
       type: String,
       enum: AccountType,

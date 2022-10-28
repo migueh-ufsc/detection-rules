@@ -1,3 +1,5 @@
+import { IProfileData } from './IProfileData';
+
 /**
  * Essa interface armazena a pontuação das dez regras de análise dos perfis
  * Essa pontuação será calculada baseada nas constantes definidas a partir da
@@ -16,7 +18,7 @@
  *
  */
 export interface IProfileAnalysis {
-  profileData: string; //id do ProfileData no banco
+  profileData: IProfileData; //id do ProfileData no banco
   accountType?: AccountType;
   followerToFollowingRatioScore?: number;
   retweetToReplyToTweetRatioScore?: number;
