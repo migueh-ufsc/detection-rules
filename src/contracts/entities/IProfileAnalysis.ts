@@ -28,7 +28,7 @@ export interface IProfileAnalysis {
   numberToLetterRatioOnUsernameScore?: number;
 }
 
-enum AccountType {
+export enum AccountType {
   BOT = 'bot',
   HUMAN = 'human',
 }
