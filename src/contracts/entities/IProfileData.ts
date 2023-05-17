@@ -3,8 +3,6 @@ export interface IProfileData {
   nTweet: number;
   nFollower: number;
   nFollowing: number;
-  //following to follower ratio
-  ffRatio: number;
   location: string;
   hasLocation: boolean;
   username: string;
@@ -16,14 +14,16 @@ export interface IProfileData {
   descriptionSize: number;
   accountAgeInDays: number;
   /** Dados da timeline aka postagens dos tweets */
-  timelineSampleReplyRatio: number /** quantos tweets sao reply */;
-  timelineSampleRetweetRatio: number /** quantos tweets sao retweet */;
-  timelineSampleTweetRatio: number /** quantos tweets sao tweets propios */;
-  timelineSampleTweetSizeAvg: number /** media do tamanho dos tweets 0-280 */;
+  timelineSampleFullSize: number /** total de tweets no sample, pode ser de 0 até o sample definido na integração (provavelmente 30) */;
+  timelineSampleReplySize: number /** quantos tweets sao reply */;
+  timelineSampleRetweetSize: number /** quantos tweets sao retweet */;
+  timelineSampleUserTweetSize: number /** quantos tweets sao tweets propios */;
+  timelineSampleUserTweetTextSizeAvg: number /** media do tamanho dos tweets 0-280 */;
   timelineSampleHashtagCount: number;
   timelineSampleRetweetCount: number;
   timelineSampleMentionCount: number;
-  timelineSampleUniqueHashtagCount: number;
-  timelineSampleUniqueRetweetCount: number;
-  timelineSampleUniqueMentionCount: number;
+  timelineSamplePostCreatedAtDates: Date[];
+  mentions: Record<string, number>;
+  hashtags: Record<string, number>;
+  retweets: Record<string, number>;
 }

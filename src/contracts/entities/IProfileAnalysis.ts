@@ -4,31 +4,54 @@ import { IProfileData } from './IProfileData';
  * Essa interface armazena a pontuação das dez regras de análise dos perfis
  * Essa pontuação será calculada baseada nas constantes definidas a partir da
  * analise dos dados de bots e humanos
- *
- * REGRAS
- * - Proporção de seguidores para seguidos (fr:fg)
- * - Proporção de retweets e replys entre os tweets
- * - Média do tamanho dos tweets
- * - Idade da conta
- * - Utilização de hashtags únicas (proporção de utilização de hashtags)
- * - Quantidade de tweets em relação a idade da conta
- * - Tamanho do texto da descrição
- * - Similaridade entre o nome do usuario e o username
- * - Proporção de numeros para letras no nome de usuário (varios numeros indicam user padrão)
- *
  */
 export interface IProfileAnalysis {
-  profileData: IProfileData; //id do ProfileData no banco
+  profileData: IProfileData;
   accountType?: AccountType;
+  /**
+   * Proporção de seguidores para seguidos (fr:fg)
+   */
   followerToFollowingRatioScore?: number;
-  retweetToReplyToTweetRatioScore?: number;
+  /**
+   * Proporção de retweets entre os tweets da timeline
+   */
+  retweetToTweetRatioScore?: number;
+  /**
+   * Menções únicas (proporção de quantas menções únicas são feitas)
+   */
+  mentionsPerUserScore?: number;
+  /**
+   * Média do tamanho dos tweets (nesse caso da amostra de tweets)
+   */
   tweetSizeAvgScore?: number;
+  /**
+   * Idade da conta em dias
+   */
   accountAgeScore?: number;
+  /**
+   * Utilização de hashtags únicas (proporção de utilização de hashtags)
+   */
   hashtagUsageScore?: number;
+  /**
+   * Quantidade de tweets em relação a idade da conta
+   */
   tweetCountToAccountAgeScore?: number;
+  /**
+   * Tamanho do texto da descrição
+   */
   descriptionTextSizeScore?: number;
+  /**
+   * Similaridade entre o nome do usuário e o username
+   */
   similarityBetweenNameAndUsernameScore?: number;
+  /**
+   * Proporção de números para letras no nome de usuário (vários números indicam user padrão)
+   */
   numberToLetterRatioOnUsernameScore?: number;
+  /**
+   * Média de tempo de postagem entre um tweet e outro
+   */
+  avgTimeBetweenPostsScore?: number;
 }
 
 export enum AccountType {
