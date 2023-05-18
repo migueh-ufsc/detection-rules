@@ -10,6 +10,8 @@ export type InputProfileData = Pick<
     isReply: boolean;
     isRetweet: boolean;
   }[];
+  description: string;
+  createdAt: string;
 };
 
 export class ProfileData implements IProfileData {
@@ -22,9 +24,9 @@ export class ProfileData implements IProfileData {
   readonly usernameSize: number;
   readonly name: string;
   readonly nameSize: number;
+  readonly descriptionSize: number;
   nNumberUsername: number;
   nLettersUsername: number;
-  descriptionSize: number;
   accountAgeInDays: number;
   timelineSampleFullSize: number;
   timelineSampleReplySize: number;
@@ -49,5 +51,32 @@ export class ProfileData implements IProfileData {
     this.usernameSize = props.username.length;
     this.name = props.name;
     this.nameSize = props.name.length;
+    this.descriptionSize = props.description.length;
+
+    this.nNumberUsername = this.getNumbersLengthFromString();
+    this.nLettersUsername = this.getLettersLengthFromString();
+    this.accountAgeInDays = this.countDaysBetweenDates(props.createdAt);
+  }
+
+  private getLettersLengthFromString(): number {
+    const lettersRegex = /[a-zA-Z]+/g;
+    const lettersMatch = this.username.match(lettersRegex);
+    const lettersText = lettersMatch ? lettersMatch.join('') : '';
+    return lettersText.length;
+  }
+
+  private getNumbersLengthFromString(): number {
+    const numbersRegex = /\d+/g;
+    const numbersMatch = this.username.match(numbersRegex);
+    const numbersText = numbersMatch ? numbersMatch.join('') : '';
+    return numbersText.length;
+  }
+
+  private countDaysBetweenDates(pastDateISO: string): number {
+    const pastDate = new Date(pastDateISO);
+    const today = new Date();
+    const timeDifference = today.getTime() - pastDate.getTime();
+    const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    return dayDifference;
   }
 }
