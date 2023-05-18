@@ -7,41 +7,19 @@ import { schemaOptions } from '../SchemaOptions';
 
 export const ProfileAnalysisSchema = new Schema<IProfileAnalysis>(
   {
-    profileData: {
-      type: Types.ObjectId,
-      ref: 'ProfileData',
-    },
-    accountType: {
-      type: String,
-      enum: AccountType,
-    },
-    followerToFollowingRatioScore: {
-      type: Number,
-    },
-    retweetToReplyToTweetRatioScore: {
-      type: Number,
-    },
-    tweetSizeAvgScore: {
-      type: Number,
-    },
-    accountAgeScore: {
-      type: Number,
-    },
-    hashtagUsageScore: {
-      type: Number,
-    },
-    tweetCountToAccountAgeScore: {
-      type: Number,
-    },
-    descriptionTextSizeScore: {
-      type: Number,
-    },
-    similarityBetweenNameAndUsernameScore: {
-      type: Number,
-    },
-    numberToLetterRatioOnUsernameScore: {
-      type: Number,
-    },
+    profileData: { type: Types.ObjectId, ref: 'ProfileData' },
+    accountType: { type: String, enum: AccountType },
+    followerToFollowingRatioScore: { type: Number },
+    retweetToTweetRatioScore: { type: Number },
+    mentionsPerUserScore: { type: Number },
+    tweetSizeAvgScore: { type: Number },
+    accountAgeScore: { type: Number },
+    hashtagUsageScore: { type: Number },
+    tweetCountToAccountAgeScore: { type: Number },
+    descriptionTextSizeScore: { type: Number },
+    similarityBetweenNameAndUsernameScore: { type: Number },
+    numberToLetterRatioOnUsernameScore: { type: Number },
+    avgTimeBetweenPostsScore: { type: Number },
   },
   schemaOptions,
 );
