@@ -4,78 +4,31 @@ import { schemaOptions } from '../SchemaOptions';
 
 export const ProfileDataSchema = new Schema<IProfileData>(
   {
-    nTweet: {
-      type: Number,
-    },
-    nFollower: {
-      type: Number,
-    },
-    nFollowing: {
-      type: Number,
-    },
-    ffRatio: {
-      type: Number,
-    },
-    location: {
-      type: String,
-    },
-    hasLocation: {
-      type: Boolean,
-    },
-    username: {
-      type: String,
-    },
-    usernameSize: {
-      type: Number,
-    },
-    nNumberUsername: {
-      type: Number,
-    },
-    nLettersUsername: {
-      type: Number,
-    },
-    name: {
-      type: String,
-    },
-    nameSize: {
-      type: Number,
-    },
-    descriptionSize: {
-      type: Number,
-    },
-    accountAgeInDays: {
-      type: Number,
-    },
-    timelineSampleReplyRatio: {
-      type: Number,
-    },
-    timelineSampleRetweetRatio: {
-      type: Number,
-    },
-    timelineSampleTweetRatio: {
-      type: Number,
-    },
-    timelineSampleTweetSizeAvg: {
-      type: Number,
-    },
-    timelineSampleHashtagCount: {
-      type: Number,
-    },
-    timelineSampleRetweetCount: {
-      type: Number,
-    },
-    timelineSampleMentionCount: {
-      type: Number,
-    },
-    timelineSampleUniqueHashtagCount: {
-      type: Number,
-    },
-    timelineSampleUniqueRetweetCount: {
-      type: Number,
-    },
-    timelineSampleUniqueMentionCount: {
-      type: Number,
-    },
+    nTweet: { type: Number },
+    nFollower: { type: Number },
+    nFollowing: { type: Number },
+    location: { type: String },
+    hasLocation: { type: Boolean },
+    username: { type: String },
+    usernameSize: { type: Number },
+    nNumberUsername: { type: Number },
+    nLettersUsername: { type: Number },
+    name: { type: String },
+    nameSize: { type: Number },
+    descriptionSize: { type: Number },
+    accountAgeInDays: { type: Number },
+    timelineSampleFullSize: { type: Number },
+    timelineSampleReplySize: { type: Number },
+    timelineSampleRetweetSize: { type: Number },
+    timelineSampleUserTweetSize: { type: Number },
+    timelineSampleUserTweetTextSizeAvg: { type: Number },
+    timelineSampleHashtagCount: { type: Number },
+    timelineSampleRetweetCount: { type: Number },
+    timelineSampleMentionCount: { type: Number },
+    timelineSamplePostCreatedAtDates: [{ type: Date }],
+    mentions: { type: Object },
+    hashtags: { type: Object },
+    retweets: { type: Object },
   },
   schemaOptions,
 );
