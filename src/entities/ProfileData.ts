@@ -16,7 +16,6 @@ export type InputProfileData = Pick<
   createdAt: string;
 };
 
-const mentionRegex = /@(\w+)/g;
 const hashtagRegex = /#(\w+)/g;
 
 export class ProfileData implements IProfileData {
@@ -44,9 +43,9 @@ export class ProfileData implements IProfileData {
   readonly timelineSampleMentionCount: number;
   timelineSamplePostCreatedAtDates: Date[];
 
-  mentions: Record<string, number>;
-  hashtags: Record<string, number>;
-  retweets: Record<string, number>;
+  mentions: Map<string, number>;
+  hashtags: Map<string, number>;
+  retweets: Map<string, number>;
 
   constructor(props: InputProfileData) {
     this.nTweet = props.nTweet;
@@ -143,8 +142,9 @@ export class ProfileData implements IProfileData {
 
   private countMentions(tweets: Array<InpuTweetType>): number {
     return tweets.reduce((total, tweet) => {
-      const matches = tweet.text.match(mentionRegex);
-      return total + (matches ? matches.length : 0);
+      return (
+        total + (tweet.mentions && !tweet.isRetweet ? tweet.mentions.length : 0)
+      );
     }, 0);
   }
 }

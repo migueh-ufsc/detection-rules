@@ -22,7 +22,7 @@ export interface IProfileData {
   timelineSampleHashtagCount: number;
   timelineSampleMentionCount: number;
   timelineSamplePostCreatedAtDates: Date[];
-  mentions: Record<string, number>;
-  hashtags: Record<string, number>;
-  retweets: Record<string, number>;
+  mentions: Map<string, number>;
+  hashtags: Map<string, number>;
+  retweets: Map<string, number>;
 }
