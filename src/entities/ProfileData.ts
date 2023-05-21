@@ -44,8 +44,8 @@ export class ProfileData implements IProfileData {
   readonly timelineSampleMentionCount: number;
   timelineSamplePostCreatedAtDates: Date[];
 
-  mentions: Map<string, number>;
-  hashtags: Map<string, number>;
+  readonly mentions: Map<string, number>;
+  readonly hashtags: Map<string, number>;
   retweets: Map<string, number>;
 
   constructor(props: InputProfileData) {
