@@ -36,7 +36,7 @@ export class ProfileData implements IProfileData {
   readonly timelineSampleRetweetSize: number;
   readonly timelineSampleUserTweetSize: number;
 
-  timelineSampleUserTweetTextSizeAvg: number;
+  readonly timelineSampleUserTweetTextSizeAvg: number;
   timelineSampleHashtagCount: number;
   timelineSampleMentionCount: number;
   timelineSamplePostCreatedAtDates: Date[];
@@ -64,6 +64,10 @@ export class ProfileData implements IProfileData {
     this.timelineSampleRetweetSize = this.calculateRetweet(props.tweets);
     this.timelineSampleReplySize = this.calculateReply(props.tweets);
     this.timelineSampleUserTweetSize = this.calculateUserTweets(props.tweets);
+
+    this.timelineSampleUserTweetTextSizeAvg = this.tweetAvgTextSize(
+      props.tweets,
+    );
   }
 
   private getLettersLengthFromString(): number {
@@ -107,5 +111,19 @@ export class ProfileData implements IProfileData {
       (count, tweet) => (!tweet.isRetweet ? count + 1 : count),
       0,
     );
+  }
+
+  private tweetAvgTextSize(tweets: Array<InpuTweetType>): number {
+    if (tweets.length === 0) return 0;
+
+    const userTweets = tweets.filter((tweet) => !tweet.isRetweet);
+    if (userTweets.length === 0) return 0;
+
+    const totalLength = userTweets.reduce(
+      (total, tweet) => total + tweet.text.length,
+      0,
+    );
+
+    return totalLength / userTweets.length;
   }
 }
