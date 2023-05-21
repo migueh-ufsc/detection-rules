@@ -16,6 +16,7 @@ export type InputProfileData = Pick<
   createdAt: string;
 };
 
+const mentionRegex = /@(\w+)/g;
 const hashtagRegex = /#(\w+)/g;
 
 export class ProfileData implements IProfileData {
@@ -74,6 +75,9 @@ export class ProfileData implements IProfileData {
 
     this.timelineSampleHashtagCount = this.countHashtags(props.tweets);
     this.timelineSampleMentionCount = this.countMentions(props.tweets);
+
+    this.mentions = this.mapMentions(props.tweets);
+    this.hashtags = this.mapHashtags(props.tweets);
   }
 
   private getLettersLengthFromString(): number {
@@ -146,5 +150,35 @@ export class ProfileData implements IProfileData {
         total + (tweet.mentions && !tweet.isRetweet ? tweet.mentions.length : 0)
       );
     }, 0);
+  }
+
+  private mapMentions(tweets: Array<InpuTweetType>): Map<string, number> {
+    const mapOfMentions = new Map<string, number>();
+    for (const tweet of tweets) {
+      const mentions = tweet.text.match(mentionRegex);
+      if (mentions) {
+        for (const mention of mentions) {
+          if (!mapOfMentions.has(mention)) mapOfMentions.set(mention, 0);
+          mapOfMentions.set(mention, mapOfMentions.get(mention) + 1);
+        }
+      }
+    }
+
+    return mapOfMentions;
+  }
+
+  private mapHashtags(tweets: Array<InpuTweetType>): Map<string, number> {
+    const mapOfHashtags = new Map<string, number>();
+    for (const tweet of tweets) {
+      const hashtags = tweet.text.match(hashtagRegex);
+      if (hashtags) {
+        for (const mention of hashtags) {
+          if (!mapOfHashtags.has(mention)) mapOfHashtags.set(mention, 0);
+          mapOfHashtags.set(mention, mapOfHashtags.get(mention) + 1);
+        }
+      }
+    }
+
+    return mapOfHashtags;
   }
 }
