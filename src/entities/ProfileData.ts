@@ -1,15 +1,17 @@
 import { IProfileData } from 'contracts/entities/IProfileData';
 
+type InpuTweetType = {
+  text: string;
+  mentions?: { username: string; id: string }[];
+  isReply: boolean;
+  isRetweet: boolean;
+};
+
 export type InputProfileData = Pick<
   IProfileData,
   'nTweet' | 'nFollower' | 'nFollowing' | 'location' | 'username' | 'name'
 > & {
-  tweets: {
-    text: string;
-    mentions?: { username: string; id: string }[];
-    isReply: boolean;
-    isRetweet: boolean;
-  }[];
+  tweets: InpuTweetType[];
   description: string;
   createdAt: string;
 };
@@ -25,16 +27,17 @@ export class ProfileData implements IProfileData {
   readonly name: string;
   readonly nameSize: number;
   readonly descriptionSize: number;
-  nNumberUsername: number;
-  nLettersUsername: number;
-  accountAgeInDays: number;
-  timelineSampleFullSize: number;
-  timelineSampleReplySize: number;
-  timelineSampleRetweetSize: number;
-  timelineSampleUserTweetSize: number;
+  readonly nNumberUsername: number;
+  readonly nLettersUsername: number;
+  readonly accountAgeInDays: number;
+
+  readonly timelineSampleFullSize: number;
+  readonly timelineSampleReplySize: number;
+  readonly timelineSampleRetweetSize: number;
+  readonly timelineSampleUserTweetSize: number;
+
   timelineSampleUserTweetTextSizeAvg: number;
   timelineSampleHashtagCount: number;
-  timelineSampleRetweetCount: number;
   timelineSampleMentionCount: number;
   timelineSamplePostCreatedAtDates: Date[];
   mentions: Record<string, number>;
@@ -52,10 +55,15 @@ export class ProfileData implements IProfileData {
     this.name = props.name;
     this.nameSize = props.name.length;
     this.descriptionSize = props.description.length;
+    this.timelineSampleFullSize = props.tweets.length;
 
     this.nNumberUsername = this.getNumbersLengthFromString();
     this.nLettersUsername = this.getLettersLengthFromString();
     this.accountAgeInDays = this.countDaysBetweenDates(props.createdAt);
+
+    this.timelineSampleRetweetSize = this.calculateRetweet(props.tweets);
+    this.timelineSampleReplySize = this.calculateReply(props.tweets);
+    this.timelineSampleUserTweetSize = this.calculateUserTweets(props.tweets);
   }
 
   private getLettersLengthFromString(): number {
@@ -78,5 +86,26 @@ export class ProfileData implements IProfileData {
     const timeDifference = today.getTime() - pastDate.getTime();
     const dayDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     return dayDifference;
+  }
+
+  private calculateRetweet(tweets: Array<InpuTweetType>): number {
+    return tweets.reduce(
+      (count, tweet) => (tweet.isRetweet ? count + 1 : count),
+      0,
+    );
+  }
+
+  private calculateReply(tweets: Array<InpuTweetType>): number {
+    return tweets.reduce(
+      (count, tweet) => (tweet.isReply ? count + 1 : count),
+      0,
+    );
+  }
+
+  private calculateUserTweets(tweets: Array<InpuTweetType>): number {
+    return tweets.reduce(
+      (count, tweet) => (!tweet.isRetweet ? count + 1 : count),
+      0,
+    );
   }
 }

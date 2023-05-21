@@ -20,7 +20,6 @@ export interface IProfileData {
   timelineSampleUserTweetSize: number /** quantos tweets sao tweets propios */;
   timelineSampleUserTweetTextSizeAvg: number /** media do tamanho dos tweets 0-280 */;
   timelineSampleHashtagCount: number;
-  timelineSampleRetweetCount: number;
   timelineSampleMentionCount: number;
   timelineSamplePostCreatedAtDates: Date[];
   mentions: Record<string, number>;
