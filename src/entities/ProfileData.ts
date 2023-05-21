@@ -16,6 +16,9 @@ export type InputProfileData = Pick<
   createdAt: string;
 };
 
+const mentionRegex = /@(\w+)/g;
+const hashtagRegex = /#(\w+)/g;
+
 export class ProfileData implements IProfileData {
   readonly nTweet: number;
   readonly nFollower: number;
@@ -37,9 +40,10 @@ export class ProfileData implements IProfileData {
   readonly timelineSampleUserTweetSize: number;
 
   readonly timelineSampleUserTweetTextSizeAvg: number;
-  timelineSampleHashtagCount: number;
-  timelineSampleMentionCount: number;
+  readonly timelineSampleHashtagCount: number;
+  readonly timelineSampleMentionCount: number;
   timelineSamplePostCreatedAtDates: Date[];
+
   mentions: Record<string, number>;
   hashtags: Record<string, number>;
   retweets: Record<string, number>;
@@ -68,6 +72,9 @@ export class ProfileData implements IProfileData {
     this.timelineSampleUserTweetTextSizeAvg = this.tweetAvgTextSize(
       props.tweets,
     );
+
+    this.timelineSampleHashtagCount = this.countHashtags(props.tweets);
+    this.timelineSampleMentionCount = this.countMentions(props.tweets);
   }
 
   private getLettersLengthFromString(): number {
@@ -125,5 +132,19 @@ export class ProfileData implements IProfileData {
     );
 
     return totalLength / userTweets.length;
+  }
+
+  private countHashtags(tweets: Array<InpuTweetType>): number {
+    return tweets.reduce((total, tweet) => {
+      const matches = tweet.text.match(hashtagRegex);
+      return total + (matches ? matches.length : 0);
+    }, 0);
+  }
+
+  private countMentions(tweets: Array<InpuTweetType>): number {
+    return tweets.reduce((total, tweet) => {
+      const matches = tweet.text.match(mentionRegex);
+      return total + (matches ? matches.length : 0);
+    }, 0);
   }
 }
