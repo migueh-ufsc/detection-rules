@@ -23,7 +23,6 @@ export const ProfileDataSchema = new Schema<IProfileData>(
     timelineSampleUserTweetSize: { type: Number },
     timelineSampleUserTweetTextSizeAvg: { type: Number },
     timelineSampleHashtagCount: { type: Number },
-    timelineSampleRetweetCount: { type: Number },
     timelineSampleMentionCount: { type: Number },
     timelineSamplePostCreatedAtDates: [{ type: Date }],
     mentions: { type: Object },
