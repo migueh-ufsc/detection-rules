@@ -13,4 +13,6 @@ export abstract class Config {
       routingKeys: ['teste.key'],
     },
   ];
+  static readonly twitterIntegrationURL =
+    process.env.TWITTER_INTEGRATION_API || '';
 }
