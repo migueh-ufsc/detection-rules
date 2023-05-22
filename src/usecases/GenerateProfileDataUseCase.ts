@@ -10,6 +10,8 @@ export class GenerateProfileDataUseCase implements BaseUseCase {
     try {
       const userData = await TwitterIntegrationService.getUserData(input);
 
+      if (await this.profileDataService.exists(userData.username)) return;
+
       const profileData = new ProfileData({
         name: userData.name,
         username: userData.username,
