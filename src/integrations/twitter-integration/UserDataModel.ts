@@ -5,8 +5,8 @@ export interface UserData {
   description?: string;
   location?: string;
   verified: boolean;
-  accountCreatedAt: Date;
-  accountDeletedAt?: Date;
+  accountCreatedAt: string;
+  accountDeletedAt?: string;
   nFollowers: number;
   nFollowing: number;
   nTweets: number;
