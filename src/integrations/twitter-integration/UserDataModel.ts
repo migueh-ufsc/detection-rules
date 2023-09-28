@@ -5,8 +5,8 @@ export interface UserData {
   description?: string;
   location?: string;
   verified: boolean;
-  accountCreatedAt: Date;
-  accountDeletedAt?: Date;
+  accountCreatedAt: string;
+  accountDeletedAt?: string;
   nFollowers: number;
   nFollowing: number;
   nTweets: number;
@@ -21,6 +21,7 @@ export interface UserData {
     mentions?: { username: string; id: string }[];
     isReply: boolean;
     isRetweet: boolean;
+    tweetCreatedAt: string;
     geolocation?: string; //todo precisa mudar pq o que vem da api é um geojson
   }[];
 }

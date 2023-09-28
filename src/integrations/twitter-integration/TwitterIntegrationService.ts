@@ -14,10 +14,13 @@ export class TwitterIntegrationService {
       if (options.id) params.id = options.id;
       if (options.username) params.username = options.id;
 
-      const userData = await axios.get<UserData>(Config.twitterIntegrationURL, {
-        params,
-        responseType: 'json',
-      });
+      const userData = await axios.get<UserData>(
+        `${Config.twitterIntegrationURL}/user`,
+        {
+          params,
+          responseType: 'json',
+        },
+      );
       return userData.data;
     } catch (error) {
       throw new HttpError({

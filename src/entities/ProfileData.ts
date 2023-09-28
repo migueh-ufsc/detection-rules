@@ -5,6 +5,7 @@ type InpuTweetType = {
   mentions?: { username: string; id: string }[];
   isReply: boolean;
   isRetweet: boolean;
+  tweetCreatedAt: string;
 };
 
 export type InputProfileData = Pick<
@@ -42,11 +43,11 @@ export class ProfileData implements IProfileData {
   readonly timelineSampleUserTweetTextSizeAvg: number;
   readonly timelineSampleHashtagCount: number;
   readonly timelineSampleMentionCount: number;
-  timelineSamplePostCreatedAtDates: Date[];
+  readonly timelineSamplePostCreatedAtDates: Date[];
 
   readonly mentions: Map<string, number>;
   readonly hashtags: Map<string, number>;
-  retweets: Map<string, number>;
+  readonly retweets: Map<string, number>;
 
   constructor(props: InputProfileData) {
     this.nTweet = props.nTweet;
@@ -75,9 +76,16 @@ export class ProfileData implements IProfileData {
 
     this.timelineSampleHashtagCount = this.countHashtags(props.tweets);
     this.timelineSampleMentionCount = this.countMentions(props.tweets);
+    this.timelineSamplePostCreatedAtDates = this.getTweetCreatedAtDates(
+      props.tweets,
+    );
 
+    // map de quantas vezes um perfil é mencionado
     this.mentions = this.mapMentions(props.tweets);
+    // map de quantas vezes uma hashtag é postada
     this.hashtags = this.mapHashtags(props.tweets);
+    // map de quantas vezes uma conta é retweetada
+    this.retweets = this.mapRetweetMentions(props.tweets);
   }
 
   private getLettersLengthFromString(): number {
@@ -180,5 +188,33 @@ export class ProfileData implements IProfileData {
     }
 
     return mapOfHashtags;
+  }
+
+  private mapRetweetMentions(
+    tweets: Array<InpuTweetType>,
+  ): Map<string, number> {
+    const mapOfRetweetMentions = new Map<string, number>();
+    for (const tweet of tweets) {
+      if (tweet.isRetweet) {
+        const mentions = tweet.text.match(mentionRegex);
+        if (mentions) {
+          for (const mention of mentions) {
+            if (!mapOfRetweetMentions.has(mention))
+              mapOfRetweetMentions.set(mention, 0);
+
+            mapOfRetweetMentions.set(
+              mention,
+              mapOfRetweetMentions.get(mention) + 1,
+            );
+          }
+        }
+      }
+    }
+
+    return mapOfRetweetMentions;
+  }
+
+  private getTweetCreatedAtDates(tweets: Array<InpuTweetType>): Date[] {
+    return tweets.map((tweet) => new Date(tweet.tweetCreatedAt));
   }
 }
