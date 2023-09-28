@@ -21,6 +21,7 @@ export interface UserData {
     mentions?: { username: string; id: string }[];
     isReply: boolean;
     isRetweet: boolean;
+    tweetCreatedAt: string;
     geolocation?: string; //todo precisa mudar pq o que vem da api é um geojson
   }[];
 }
