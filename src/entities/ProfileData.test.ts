@@ -1,7 +1,7 @@
-import { ProfileData } from './ProfileData';
+import { InputProfileData, ProfileData } from './ProfileData';
 
 describe('ProfileData', () => {
-  const sampleInput = {
+  const sampleInput: InputProfileData = {
     nTweet: 10,
     nFollower: 100,
     nFollowing: 50,
@@ -16,12 +16,14 @@ describe('ProfileData', () => {
         mentions: [],
         isReply: false,
         isRetweet: false,
+        tweetCreatedAt: '2022-01-01T00:00:00.000Z',
       },
       {
         text: '@bob789 Retweet tweet',
         mentions: [{ username: 'bob789', id: '456' }],
         isReply: false,
         isRetweet: true,
+        tweetCreatedAt: '2022-01-01T00:00:00.000Z',
       },
       {
         text: '@alice321 @bob789 Reply tweet',
@@ -31,6 +33,7 @@ describe('ProfileData', () => {
         ],
         isReply: true,
         isRetweet: false,
+        tweetCreatedAt: '2022-01-01T00:00:00.000Z',
       },
     ],
   };
@@ -58,8 +61,11 @@ describe('ProfileData', () => {
     expect(profileData.timelineSampleUserTweetTextSizeAvg).toBe(24.5);
     expect(profileData.timelineSampleHashtagCount).toBe(1);
     expect(profileData.timelineSampleMentionCount).toBe(2);
+    expect(profileData.timelineSamplePostCreatedAtDates).toHaveLength(3);
     expect(profileData.mentions.get('@alice321')).toBe(1);
     expect(profileData.mentions.get('@bob789')).toBe(2);
     expect(profileData.hashtags.get('#Twitter')).toBe(1);
+    expect(profileData.retweets.get('@bob789')).toBe(1);
+    expect(profileData.retweets.get('@alice321')).toBeUndefined();
   });
 });
