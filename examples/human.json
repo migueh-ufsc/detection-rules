@@ -1,0 +1,617 @@
+{
+  "_id": "646187d794bb8acf919f4249",
+  "id": "5727802",
+  "username": "Neurotic",
+  "name": "Mark Mandel",
+  "description": "Dev Advocate @googlecloud for Games, #Gamedev ∩ Infra, Founder @agonesdev & @quilkindev, GDC Online Game Tech Summit Advisor, Occasional YT & Twitch, he/him",
+  "location": "San Francisco, CA",
+  "verified": false,
+  "accountCreatedAt": "2007-05-03T00:49:48.000Z",
+  "nFollowers": 6250,
+  "nFollowing": 2598,
+  "nTweets": 19646,
+  "sampleTimeline": [
+    {
+      "_id": "646187d794bb8acf919f4210",
+      "id": "1656120402488487936",
+      "text": "First stop on a return to Australia. https://t.co/MeDPD8yJC2",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 2,
+      "nLike": 4,
+      "nQuote": 0,
+      "mentions": [],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.456Z",
+      "updatedAt": "2023-05-15T01:16:07.456Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f421d",
+      "id": "1648612795968110592",
+      "text": "At 1:30pm at the Google Booth I'll be giving a ~10 minute talk on \"Global Multiplayer Games with OSS and Google Cloud\" - swing by if that sounds like fun!\n\n#KubeCon https://t.co/83fVgYQIkW",
+      "authorId": "5727802",
+      "nRetweet": 2,
+      "nReply": 1,
+      "nLike": 17,
+      "nQuote": 0,
+      "mentions": [],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.457Z",
+      "updatedAt": "2023-05-15T01:16:07.457Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4220",
+      "id": "1648215852867547138",
+      "text": "Everyone needs a giant lamp. #kubecon https://t.co/xpydj0j9TJ",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 2,
+      "nLike": 18,
+      "nQuote": 0,
+      "mentions": [],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.457Z",
+      "updatedAt": "2023-05-15T01:16:07.457Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f420e",
+      "id": "1656823927002509313",
+      "text": "RT @the_thagomizer: Look! It’s the thing I’ve been working on since December",
+      "authorId": "5727802",
+      "nRetweet": 6,
+      "nReply": 0,
+      "nLike": 0,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "the_thagomizer",
+          "id": "799166785"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": true,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4227",
+      "id": "1643373669916495872",
+      "text": "When in doubt, just delete all the Unreal Engine intermediary cache files.\n\nThat's what I learned today.",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 1,
+      "nLike": 8,
+      "nQuote": 0,
+      "mentions": [],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.457Z",
+      "updatedAt": "2023-05-15T01:16:07.457Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4217",
+      "id": "1649695047145889793",
+      "text": "@710wonderdev We had a surprise wedding 😊\n\nEveryone thought it was an engagement party, but then we brought out a celebrant and got married then and there.\n\nMy wife also wore the same vintage dress her Mum, that she's very close with, got married in 🥰\n\nhttps://t.co/JAqsms0LWh",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 0,
+      "nLike": 0,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "710wonderdev",
+          "id": "1266455365782142977"
+        }
+      ],
+      "isReply": true,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4216",
+      "id": "1650642826680762368",
+      "text": "@AnyaynA That's AMAZING!",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 1,
+      "nLike": 2,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "AnyaynA",
+          "id": "15690888"
+        }
+      ],
+      "isReply": true,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f421f",
+      "id": "1648360602446725120",
+      "text": "@cra We were in the same room, and I didn't see yoU!",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 0,
+      "nLike": 0,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "cra",
+          "id": "14602130"
+        }
+      ],
+      "isReply": true,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f421c",
+      "id": "1648662973601161217",
+      "text": "Excited! #kubecon https://t.co/sqotdipx6U",
+      "authorId": "5727802",
+      "nRetweet": 1,
+      "nReply": 1,
+      "nLike": 13,
+      "nQuote": 0,
+      "mentions": [],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.457Z",
+      "updatedAt": "2023-05-15T01:16:07.457Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4213",
+      "id": "1653829882059841536",
+      "text": "Well isn't that a lovely thing to get in your email 💜 https://t.co/mdfG3KC93A",
+      "authorId": "5727802",
+      "nRetweet": 1,
+      "nReply": 2,
+      "nLike": 26,
+      "nQuote": 0,
+      "mentions": [],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.456Z",
+      "updatedAt": "2023-05-15T01:16:07.456Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4225",
+      "id": "1645427160591769600",
+      "text": "👋🏻I'm at #Kubecon next week!\n\nPresenting on @quilkindev &amp; @agonesdev to host game servers &amp; provide access control, telemetry &amp; more to UDP game traffic for dedicated game servers \n\nDM me if you want to meet and chat about backends for multiplayer games or any of the above! https://t.co/eYQwRM5KbX",
+      "authorId": "5727802",
+      "nRetweet": 3,
+      "nReply": 0,
+      "nLike": 16,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "quilkindev",
+          "id": "1268616505739997185"
+        },
+        {
+          "username": "agonesdev",
+          "id": "959645676563869696"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f422a",
+      "id": "1641085592015613953",
+      "text": "There's @briandorsey ! https://t.co/Fgmv69h35W",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 0,
+      "nLike": 2,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "briandorsey",
+          "id": "1830491"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4215",
+      "id": "1653094545935200257",
+      "text": "RT @derek_downey: If you run apps on #GKE and want to use a #CloudSpanner database, this hands-on lab will guide you through the process us…",
+      "authorId": "5727802",
+      "nRetweet": 6,
+      "nReply": 0,
+      "nLike": 0,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "derek_downey",
+          "id": "245831030"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": true,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4214",
+      "id": "1653473860577280000",
+      "text": "RT @jirv500: My Kubecon talk is up on YouTube! Learn about how we're using @agonesdev to run real time gameservers on Kubernetes at PlaySta…",
+      "authorId": "5727802",
+      "nRetweet": 5,
+      "nReply": 0,
+      "nLike": 0,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "jirv500",
+          "id": "268874592"
+        },
+        {
+          "username": "agonesdev",
+          "id": "959645676563869696"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": true,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4226",
+      "id": "1643377810646630400",
+      "text": "@mfschweitzer @agonesdev I've almost written this several times now 😁",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 0,
+      "nLike": 1,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "mfschweitzer",
+          "id": "2324319150"
+        },
+        {
+          "username": "agonesdev",
+          "id": "959645676563869696"
+        }
+      ],
+      "isReply": true,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4219",
+      "id": "1649329735904763904",
+      "text": "🎮 DO YOU LIKE VIDEO GAMES??? 🎮\n\nIf so, I'll be talking at 11:55 in Room A on Game Server orchestration and UDP Service Mesh today with @agonesdev and @quilkindev #KubeCon https://t.co/pSGiB5iCJk",
+      "authorId": "5727802",
+      "nRetweet": 2,
+      "nReply": 1,
+      "nLike": 14,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "agonesdev",
+          "id": "959645676563869696"
+        },
+        {
+          "username": "quilkindev",
+          "id": "1268616505739997185"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f421b",
+      "id": "1648667910477365248",
+      "text": "@dbradstock Yeah! https://t.co/LuY3mYxN1h",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 1,
+      "nLike": 5,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "dbradstock",
+          "id": "2800135940"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f421a",
+      "id": "1649023251845136385",
+      "text": "RT @agonesdev: Nice coverage about yours truly from @stackpublishing at #Kubecon \n\nhttps://t.co/6dvgIm6svA https://t.co/yP49aek4qT",
+      "authorId": "5727802",
+      "nRetweet": 5,
+      "nReply": 0,
+      "nLike": 0,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "agonesdev",
+          "id": "959645676563869696"
+        },
+        {
+          "username": "StackPublishing",
+          "id": "1321456908465823745"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": true,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f420d",
+      "id": "1656824841553735680",
+      "text": "Apparently I'm on @bluesky now!\n\nhttps://t.co/7kXeYFoT8y",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 1,
+      "nLike": 1,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "bluesky",
+          "id": "1199812749469126657"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f421e",
+      "id": "1648361817926692865",
+      "text": "I have this half formed thought about how both WASM and eBPF are taking an outside-in approach rather than inside-out, and that's a good thing.\n\nRather than being \"how do we solve X for Java\" (for example), it's now \"How do we solve this for the next 10 years for everything\" 🤔",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 0,
+      "nLike": 1,
+      "nQuote": 0,
+      "mentions": [],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.457Z",
+      "updatedAt": "2023-05-15T01:16:07.457Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4221",
+      "id": "1647991946370068481",
+      "text": "@British_Airways Now my connecting flight has been delayed over an hour, due to a delayed incoming flight, having to get people to check luggage and now the ✨ jetty is stuck to the plane ✨.\n\nWe've just been told it's unstuck, but I'm not holding my breath yet.",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 0,
+      "nLike": 0,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "British_Airways",
+          "id": "18332190"
+        }
+      ],
+      "isReply": true,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f420f",
+      "id": "1656413914089807872",
+      "text": "@LynntendoWii https://t.co/y07pyBWI0H",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 0,
+      "nLike": 1,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "LynntendoWii",
+          "id": "1430917134"
+        }
+      ],
+      "isReply": true,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4223",
+      "id": "1646893321292324864",
+      "text": ".@thisisnotapril and I did a talk at #GDC22 last year on #opensource in #gamedev -- and it just hit YouTube.\n\nWe hope you enjoy!\n\nhttps://t.co/lvw99j4GwX",
+      "authorId": "5727802",
+      "nRetweet": 3,
+      "nReply": 1,
+      "nLike": 5,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "thisisnotapril",
+          "id": "781786"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4222",
+      "id": "1647351317055283201",
+      "text": "Bleeerrrrggg @British_Airways cancelled my fight and put me on a new one 3 hours later (not a huge deal) and downgraded me to economy (😡) for my 10 hour flight to Amsterdam for #KubeConEU - which is now going to be mega full as well.\n\nIf I'm grumpy in Amsterdam, this is why.",
+      "authorId": "5727802",
+      "nRetweet": 1,
+      "nReply": 2,
+      "nLike": 3,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "British_Airways",
+          "id": "18332190"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4224",
+      "id": "1646212812040179713",
+      "text": "RT @agonesdev: Agones 1.31.0 is out today!\n\nOur #Kubernetes support matrix has gone to 1.24, 1.25 and 1.26 ⬆️\n\nWe also have some great bug…",
+      "authorId": "5727802",
+      "nRetweet": 4,
+      "nReply": 0,
+      "nLike": 0,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "agonesdev",
+          "id": "959645676563869696"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": true,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4229",
+      "id": "1641844864466948096",
+      "text": "Lovely to see @agonesdev as the example! 😃 https://t.co/1LvgHgJS0v",
+      "authorId": "5727802",
+      "nRetweet": 2,
+      "nReply": 0,
+      "nLike": 10,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "agonesdev",
+          "id": "959645676563869696"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4218",
+      "id": "1649643788669964289",
+      "text": "@kaslinfields @Divya_Mohan02 But still speedy!!! 🤗",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 0,
+      "nLike": 4,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "kaslinfields",
+          "id": "2497655854"
+        },
+        {
+          "username": "Divya_Mohan02",
+          "id": "1207563504808534016"
+        }
+      ],
+      "isReply": true,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4211",
+      "id": "1656065399757348870",
+      "text": "RT @kaslinfields: This morning I'm watching \"PlayStation and Kubernetes: How to Solve a Problem Like Real-Time\" by @jirv500, @PlayStation f…",
+      "authorId": "5727802",
+      "nRetweet": 3,
+      "nReply": 0,
+      "nLike": 0,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "kaslinfields",
+          "id": "2497655854"
+        },
+        {
+          "username": "jirv500",
+          "id": "268874592"
+        },
+        {
+          "username": "PlayStation",
+          "id": "10671602"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": true,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4228",
+      "id": "1642966832918454273",
+      "text": "Ever wonder how the multiplayer game Google Doodles were built? 🤔 Me too! So I wrote a blog post with the @GoogleDoodles  team!\n\nSpoiler alert: It's GKE for all the infrastructure, @Agonesdev for the game servers and @Open_Match for the matchmaking 🎮\n\n👇🏻\nhttps://t.co/q5XmBWPIBr",
+      "authorId": "5727802",
+      "nRetweet": 10,
+      "nReply": 1,
+      "nLike": 35,
+      "nQuote": 0,
+      "mentions": [
+        {
+          "username": "GoogleDoodles",
+          "id": "296459271"
+        },
+        {
+          "username": "agonesdev",
+          "id": "959645676563869696"
+        },
+        {
+          "username": "Open_Match",
+          "id": "1117905603353964545"
+        }
+      ],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.459Z",
+      "updatedAt": "2023-05-15T01:16:07.459Z"
+    },
+    {
+      "_id": "646187d794bb8acf919f4212",
+      "id": "1654885230870958080",
+      "text": "VACATION TIME 🥂 https://t.co/TfyJUAmWRy",
+      "authorId": "5727802",
+      "nRetweet": 0,
+      "nReply": 0,
+      "nLike": 6,
+      "nQuote": 0,
+      "mentions": [],
+      "isReply": false,
+      "isRetweet": false,
+      "createdAt": "2023-05-15T01:16:07.456Z",
+      "updatedAt": "2023-05-15T01:16:07.456Z"
+    }
+  ],
+  "createdAt": "2023-05-15T01:16:07.471Z",
+  "updatedAt": "2023-05-15T01:16:07.471Z"
+}
