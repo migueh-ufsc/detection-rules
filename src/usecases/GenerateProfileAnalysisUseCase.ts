@@ -14,6 +14,14 @@ export class GenerateProfileAnalysisUseCase implements BaseUseCase {
       const profileData = await this.profileDataService.findByUsername(
         username,
       );
+
+      const geProfileAnalysis =
+        await this.profileAnalysisService.findAnalysisByProfileDataId(
+          profileData._id,
+        );
+
+      if (geProfileAnalysis && geProfileAnalysis.length) return;
+
       const profileAnalysis = new ProfileAnalysis({ profileData });
 
       await this.profileAnalysisService.create(profileAnalysis);

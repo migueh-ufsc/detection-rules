@@ -8,7 +8,9 @@ export class ProfileDataService extends BaseService<IProfileData> {
     super(ProfileDataModel);
   }
 
-  async findByUsername(username: string): Promise<IProfileData> {
+  async findByUsername(
+    username: string,
+  ): Promise<IProfileData & { _id: string }> {
     try {
       return await this.model.findOne({ username }).lean();
     } catch (error) {
