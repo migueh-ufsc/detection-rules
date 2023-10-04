@@ -6,6 +6,7 @@ import { IProfileData } from './IProfileData';
  * analise dos dados de bots e humanos
  */
 export interface IProfileAnalysis {
+  _id?: string;
   profileData: IProfileData;
   accountType?: AccountType;
   /**

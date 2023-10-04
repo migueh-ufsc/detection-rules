@@ -5,6 +5,7 @@ import {
 import { IProfileData } from 'contracts/entities/IProfileData';
 
 export class ProfileAnalysis implements IProfileAnalysis {
+  _id: string;
   profileData: IProfileData;
   accountType?: AccountType;
   followerToFollowingRatioScore?: number;
@@ -22,7 +23,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   constructor(props: IProfileAnalysis) {
     this.profileData = props.profileData;
     this.accountType = props.accountType;
-    this.followerToFollowingRatioScore = props.followerToFollowingRatioScore;
+    this.followerToFollowingRatioScore = this.followerToFollowingRatio();
     this.retweetToTweetRatioScore = props.retweetToTweetRatioScore;
     this.mentionsPerUserScore = props.mentionsPerUserScore;
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
@@ -35,5 +36,12 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.numberToLetterRatioOnUsernameScore =
       props.numberToLetterRatioOnUsernameScore;
     this.avgTimeBetweenPostsScore = props.avgTimeBetweenPostsScore;
+  }
+
+  private followerToFollowingRatio(): number {
+    if (this.profileData.nFollowing === 0) {
+      return this.profileData.nFollower;
+    }
+    return this.profileData.nFollower / this.profileData.nFollowing;
   }
 }
