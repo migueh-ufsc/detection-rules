@@ -24,8 +24,9 @@ export class ProfileAnalysis implements IProfileAnalysis {
   constructor(props: IProfileAnalysis) {
     this.profileData = props.profileData;
     this.accountType = props.accountType;
-    this.followingToFollowerRatioScore = this.calculateFollowingToFollowerRatio();
-    this.retweetToTweetRatioScore = props.retweetToTweetRatioScore;
+    this.followingToFollowerRatioScore =
+      this.calculateFollowingToFollowerRatio();
+    this.retweetToTweetRatioScore = this.calculateRetweetToTweetRatioScore();
     this.mentionsPerUserScore = props.mentionsPerUserScore;
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
     this.accountAgeScore = props.accountAgeScore;
@@ -46,5 +47,13 @@ export class ProfileAnalysis implements IProfileAnalysis {
         : Config.ruleConfig.maxFFRatio; // Evita a divisão por zero
 
     return Math.min(ratio, Config.ruleConfig.maxFFRatio);
+  }
+
+  private calculateRetweetToTweetRatioScore(): number {
+    if (this.profileData.timelineSampleFullSize === 0) return 0; // Evitar divisão por zero
+    return (
+      this.profileData.timelineSampleRetweetSize /
+      this.profileData.timelineSampleFullSize
+    );
   }
 }
