@@ -10,9 +10,9 @@ export interface IProfileAnalysis {
   profileData: IProfileData;
   accountType?: AccountType;
   /**
-   * Proporção de seguidores para seguidos (fr:fg)
+   * Proporção de seguidos para seguidores (fg:fr)
    */
-  followerToFollowingRatioScore?: number;
+  followingToFollowerRatioScore?: number;
   /**
    * Proporção de retweets entre os tweets da timeline
    */
