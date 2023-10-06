@@ -6,6 +6,10 @@ import { default as Database } from 'infra/database/Connection';
 import { default as Server } from 'infra/server/Server';
 import { ProfileAnalysisService } from 'services/ProfileAnalysisService';
 import { model } from 'mongoose';
+import { writeFileSync } from 'fs';
+
+const filename = 'following-follower-ratio.csv';
+const property = 'followingToFollowerRatioScore';
 
 (async () => {
   await Promise.all([Database.init(), Server.init()]);
@@ -14,7 +18,7 @@ import { model } from 'mongoose';
 
   const profileAnalysisService = new ProfileAnalysisService();
 
-  const allAnalysis = await profileAnalysisService.findWithProfileData({});
+  let allAnalysis = await profileAnalysisService.findWithProfileData({});
 
   // gerando novas dados de analise
 
@@ -23,6 +27,17 @@ import { model } from 'mongoose';
 
     await profileAnalysisService.update({ _id: analysis._id }, newAnalysis);
   }
+
+  // reload
+  allAnalysis = await profileAnalysisService.findWithProfileData({});
+
+  // escrevendo csv
+  writeFileSync(
+    filename,
+    JSON.stringify(
+      allAnalysis.map((e) => `${e[property]},${e.accountType}`).join('\n'),
+    ),
+  );
 
   console.log('done');
 })();
