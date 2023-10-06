@@ -24,7 +24,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   constructor(props: IProfileAnalysis) {
     this.profileData = props.profileData;
     this.accountType = props.accountType;
-    this.followingToFollowerRatioScore = this.followingToFollowerRatio();
+    this.followingToFollowerRatioScore = this.calculateFollowingToFollowerRatio();
     this.retweetToTweetRatioScore = props.retweetToTweetRatioScore;
     this.mentionsPerUserScore = props.mentionsPerUserScore;
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
@@ -39,7 +39,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.avgTimeBetweenPostsScore = props.avgTimeBetweenPostsScore;
   }
 
-  private followingToFollowerRatio(): number {
+  private calculateFollowingToFollowerRatio(): number {
     const ratio =
       this.profileData.nFollower !== 0
         ? this.profileData.nFollowing / this.profileData.nFollower
