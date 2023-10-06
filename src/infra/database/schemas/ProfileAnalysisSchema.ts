@@ -9,7 +9,7 @@ export const ProfileAnalysisSchema = new Schema<IProfileAnalysis>(
   {
     profileData: { type: Types.ObjectId, ref: 'ProfileData' },
     accountType: { type: String, enum: AccountType },
-    followerToFollowingRatioScore: { type: Number },
+    followingToFollowerRatioScore: { type: Number },
     retweetToTweetRatioScore: { type: Number },
     mentionsPerUserScore: { type: Number },
     tweetSizeAvgScore: { type: Number },

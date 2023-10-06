@@ -3,11 +3,13 @@ import {
   IProfileAnalysis,
 } from 'contracts/entities/IProfileAnalysis';
 import { IProfileData } from 'contracts/entities/IProfileData';
+import { Config } from 'infra/config';
 
 export class ProfileAnalysis implements IProfileAnalysis {
+  _id: string;
   profileData: IProfileData;
   accountType?: AccountType;
-  followerToFollowingRatioScore?: number;
+  followingToFollowerRatioScore?: number;
   retweetToTweetRatioScore?: number;
   mentionsPerUserScore?: number;
   tweetSizeAvgScore?: number;
@@ -22,7 +24,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   constructor(props: IProfileAnalysis) {
     this.profileData = props.profileData;
     this.accountType = props.accountType;
-    this.followerToFollowingRatioScore = props.followerToFollowingRatioScore;
+    this.followingToFollowerRatioScore = this.calculateFollowingToFollowerRatio();
     this.retweetToTweetRatioScore = props.retweetToTweetRatioScore;
     this.mentionsPerUserScore = props.mentionsPerUserScore;
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
@@ -35,5 +37,14 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.numberToLetterRatioOnUsernameScore =
       props.numberToLetterRatioOnUsernameScore;
     this.avgTimeBetweenPostsScore = props.avgTimeBetweenPostsScore;
+  }
+
+  private calculateFollowingToFollowerRatio(): number {
+    const ratio =
+      this.profileData.nFollower !== 0
+        ? this.profileData.nFollowing / this.profileData.nFollower
+        : Config.ruleConfig.maxFFRatio; // Evita a divisão por zero
+
+    return Math.min(ratio, Config.ruleConfig.maxFFRatio);
   }
 }

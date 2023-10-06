@@ -15,4 +15,8 @@ export abstract class Config {
   ];
   static readonly twitterIntegrationURL =
     process.env.TWITTER_INTEGRATION_API || '';
+
+  static readonly ruleConfig = {
+    maxFFRatio: parseFloat(process.env.MAX_LIMIT_FOLLOWING_TO_FOLLOWER),
+  };
 }
