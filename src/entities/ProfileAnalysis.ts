@@ -3,6 +3,7 @@ import {
   IProfileAnalysis,
 } from 'contracts/entities/IProfileAnalysis';
 import { IProfileData } from 'contracts/entities/IProfileData';
+import { Config } from 'infra/config';
 
 export class ProfileAnalysis implements IProfileAnalysis {
   _id: string;
@@ -39,9 +40,11 @@ export class ProfileAnalysis implements IProfileAnalysis {
   }
 
   private followingToFollowerRatio(): number {
-    if (this.profileData.nFollower === 0) {
-      return this.profileData.nFollowing;
-    }
-    return this.profileData.nFollowing / this.profileData.nFollower;
+    const ratio =
+      this.profileData.nFollower !== 0
+        ? this.profileData.nFollowing / this.profileData.nFollower
+        : Config.ruleConfig.maxFFRatio; // Evita a divisão por zero
+
+    return Math.min(ratio, Config.ruleConfig.maxFFRatio);
   }
 }
