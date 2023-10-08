@@ -18,5 +18,6 @@ export abstract class Config {
 
   static readonly ruleConfig = {
     maxFFRatio: parseFloat(process.env.MAX_LIMIT_FOLLOWING_TO_FOLLOWER),
+    maxUniqueMentionRatio: parseFloat(process.env.MAX_LIMIT_UNIQUE_MENTIONS),
   };
 }

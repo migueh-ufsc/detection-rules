@@ -1,3 +1,4 @@
+import { normalize } from 'common/Utils';
 import {
   AccountType,
   IProfileAnalysis,
@@ -53,6 +54,10 @@ export class ProfileAnalysis implements IProfileAnalysis {
     const totalMentions = this.profileData.timelineSampleMentionCount;
     const uniqueMentions = this.profileData.mentions.size;
     if (totalMentions === 0) return 0;
-    return uniqueMentions / totalMentions;
+    return normalize(
+      uniqueMentions / totalMentions,
+      0,
+      Config.ruleConfig.maxUniqueMentionRatio,
+    );
   }
 }
