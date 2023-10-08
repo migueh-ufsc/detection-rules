@@ -11,7 +11,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   accountType?: AccountType;
   followingToFollowerRatioScore?: number;
   retweetToTweetRatioScore?: number;
-  mentionsPerUserScore?: number;
+  readonly mentionsPerUserScore?: number;
   tweetSizeAvgScore?: number;
   accountAgeScore?: number;
   hashtagUsageScore?: number;
@@ -24,9 +24,10 @@ export class ProfileAnalysis implements IProfileAnalysis {
   constructor(props: IProfileAnalysis) {
     this.profileData = props.profileData;
     this.accountType = props.accountType;
-    this.followingToFollowerRatioScore = this.calculateFollowingToFollowerRatio();
+    this.followingToFollowerRatioScore =
+      this.calculateFollowingToFollowerRatio();
     this.retweetToTweetRatioScore = props.retweetToTweetRatioScore;
-    this.mentionsPerUserScore = props.mentionsPerUserScore;
+    this.mentionsPerUserScore = this.calculateUniqueMentionRatio();
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
     this.accountAgeScore = props.accountAgeScore;
     this.hashtagUsageScore = props.hashtagUsageScore;
@@ -46,5 +47,12 @@ export class ProfileAnalysis implements IProfileAnalysis {
         : Config.ruleConfig.maxFFRatio; // Evita a divisão por zero
 
     return Math.min(ratio, Config.ruleConfig.maxFFRatio);
+  }
+
+  private calculateUniqueMentionRatio(): number {
+    const totalMentions = this.profileData.timelineSampleMentionCount;
+    const uniqueMentions = this.profileData.mentions.size;
+    if (totalMentions === 0) return 0;
+    return uniqueMentions / totalMentions;
   }
 }
