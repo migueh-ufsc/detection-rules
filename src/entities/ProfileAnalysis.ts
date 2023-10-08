@@ -50,7 +50,9 @@ export class ProfileAnalysis implements IProfileAnalysis {
     return Math.min(ratio, Config.ruleConfig.maxFFRatio);
   }
 
-  private calculateUniqueMentionRatio(): number {
+  private calculateUniqueMentionRatio(): number | null {
+    if (this.profileData.timelineSampleFullSize === 0) return null; // nao considera essa heuristica pra timelinse vazias
+
     const totalMentions = this.profileData.timelineSampleMentionCount;
     const uniqueMentions = this.profileData.mentions.size;
     if (totalMentions === 0) return 0;
