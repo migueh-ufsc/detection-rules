@@ -10,7 +10,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   profileData: IProfileData;
   accountType?: AccountType;
   readonly followingToFollowerRatioScore?: number;
-  readonly retweetToTweetRatioScore?: number;
+  readonly retweetToTweetRatioScore?: number | null;
   mentionsPerUserScore?: number;
   tweetSizeAvgScore?: number;
   accountAgeScore?: number;
@@ -49,8 +49,8 @@ export class ProfileAnalysis implements IProfileAnalysis {
     return Math.min(ratio, Config.ruleConfig.maxFFRatio);
   }
 
-  private calculateRetweetToTweetRatioScore(): number {
-    if (this.profileData.timelineSampleFullSize === 0) return 0; // Evitar divisão por zero
+  private calculateRetweetToTweetRatioScore(): number | null {
+    if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
     return (
       this.profileData.timelineSampleRetweetSize /
       this.profileData.timelineSampleFullSize

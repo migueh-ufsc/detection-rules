@@ -40,4 +40,6 @@ const property = 'retweetToTweetRatioScore';
   );
 
   console.log('done');
+
+  process.exit(1);
 })();
