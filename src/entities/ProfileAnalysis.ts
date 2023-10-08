@@ -9,8 +9,8 @@ export class ProfileAnalysis implements IProfileAnalysis {
   _id: string;
   profileData: IProfileData;
   accountType?: AccountType;
-  followingToFollowerRatioScore?: number;
-  retweetToTweetRatioScore?: number;
+  readonly followingToFollowerRatioScore?: number;
+  readonly retweetToTweetRatioScore?: number;
   mentionsPerUserScore?: number;
   tweetSizeAvgScore?: number;
   accountAgeScore?: number;
