@@ -8,8 +8,8 @@ import { ProfileAnalysisService } from 'services/ProfileAnalysisService';
 import { model } from 'mongoose';
 import { writeFileSync } from 'fs';
 
-const filename = 'unique-mention-ratio.csv';
-const property = 'mentionsPerUserScore';
+const filename = 'unique-hashtag-ratio.csv';
+const property = 'hashtagUsageScore';
 
 (async () => {
   await Promise.all([Database.init()]);

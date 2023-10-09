@@ -31,7 +31,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.mentionsPerUserScore = this.calculateUniqueMentionRatio();
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
     this.accountAgeScore = props.accountAgeScore;
-    this.hashtagUsageScore = props.hashtagUsageScore;
+    this.hashtagUsageScore = this.uniqueHashtagRatio();
     this.tweetCountToAccountAgeScore = props.tweetCountToAccountAgeScore;
     this.descriptionTextSizeScore = props.descriptionTextSizeScore;
     this.similarityBetweenNameAndUsernameScore =
@@ -48,6 +48,19 @@ export class ProfileAnalysis implements IProfileAnalysis {
         : Config.ruleConfig.maxFFRatio; // Evita a divisão por zero
 
     return Math.min(ratio, Config.ruleConfig.maxFFRatio);
+  }
+
+  private uniqueHashtagRatio(): number | null {
+    if (this.profileData.timelineSampleFullSize === 0) return null;
+
+    const totalHashtags = this.profileData.timelineSampleHashtagCount;
+    const uniqueHashtags = this.profileData.hashtags.size;
+
+    if (totalHashtags === 0) {
+      return 0; // para evitar divisão por zero
+    }
+
+    return uniqueHashtags / totalHashtags;
   }
 
   private calculateUniqueMentionRatio(): number | null {
