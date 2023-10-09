@@ -13,11 +13,11 @@ export class ProfileAnalysis implements IProfileAnalysis {
   readonly followingToFollowerRatioScore?: number;
   readonly retweetToTweetRatioScore?: number | null;
   readonly mentionsPerUserScore?: number;
-  tweetSizeAvgScore?: number;
-  accountAgeScore?: number;
-  hashtagUsageScore?: number;
+  readonly tweetSizeAvgScore?: number;
+  readonly accountAgeScore?: number;
+  readonly hashtagUsageScore?: number;
   tweetCountToAccountAgeScore?: number;
-  descriptionTextSizeScore?: number;
+  readonly descriptionTextSizeScore?: number;
   similarityBetweenNameAndUsernameScore?: number;
   numberToLetterRatioOnUsernameScore?: number;
   avgTimeBetweenPostsScore?: number;
@@ -27,11 +27,11 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.accountType = props.accountType;
     this.followingToFollowerRatioScore =
       this.calculateFollowingToFollowerRatio();
-    this.retweetToTweetRatioScore = this.calculateRetweetToTweetRatioScore();
+    this.retweetToTweetRatioScore = this.calculateRetweetToTweetRatio();
     this.mentionsPerUserScore = this.calculateUniqueMentionRatio();
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
     this.accountAgeScore = props.accountAgeScore;
-    this.hashtagUsageScore = this.uniqueHashtagRatio();
+    this.hashtagUsageScore = this.calculateUniqueHashtagRatio();
     this.tweetCountToAccountAgeScore = props.tweetCountToAccountAgeScore;
     this.descriptionTextSizeScore = props.descriptionTextSizeScore;
     this.similarityBetweenNameAndUsernameScore =
@@ -50,7 +50,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     return Math.min(ratio, Config.ruleConfig.maxFFRatio);
   }
 
-  private uniqueHashtagRatio(): number | null {
+  private calculateUniqueHashtagRatio(): number | null {
     if (this.profileData.timelineSampleFullSize === 0) return null;
 
     const totalHashtags = this.profileData.timelineSampleHashtagCount;
@@ -76,7 +76,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     );
   }
 
-  private calculateRetweetToTweetRatioScore(): number | null {
+  private calculateRetweetToTweetRatio(): number | null {
     if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
     return (
       this.profileData.timelineSampleRetweetSize /
