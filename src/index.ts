@@ -3,7 +3,7 @@ import { IProfileData } from 'contracts/entities/IProfileData';
 
 import { ProfileAnalysis } from 'entities/ProfileAnalysis';
 import { default as Database } from 'infra/database/Connection';
-import { default as Server } from 'infra/server/Server';
+// import { default as Server } from 'infra/server/Server';
 import { ProfileAnalysisService } from 'services/ProfileAnalysisService';
 import { model } from 'mongoose';
 import { writeFileSync } from 'fs';
@@ -12,7 +12,7 @@ const filename = 'unique-hashtag-ratio.csv';
 const property = 'hashtagUsageScore';
 
 (async () => {
-  await Promise.all([Database.init(), Server.init()]);
+  await Promise.all([Database.init()]);
 
   model<IProfileData>('ProfileData', ProfileDataSchema);
 
