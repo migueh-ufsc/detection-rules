@@ -8,8 +8,8 @@ import { ProfileAnalysisService } from 'services/ProfileAnalysisService';
 import { model } from 'mongoose';
 import { writeFileSync } from 'fs';
 
-const filename = 'following-follower-ratio.csv';
-const property = 'followingToFollowerRatioScore';
+const filename = 'retweet-tweet-ratio.csv';
+const property = 'retweetToTweetRatioScore';
 
 (async () => {
   await Promise.all([Database.init(), Server.init()]);
@@ -40,4 +40,6 @@ const property = 'followingToFollowerRatioScore';
   );
 
   console.log('done');
+
+  process.exit(1);
 })();

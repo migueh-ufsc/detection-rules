@@ -16,7 +16,7 @@ export interface IProfileAnalysis {
   /**
    * Proporção de retweets entre os tweets da timeline
    */
-  retweetToTweetRatioScore?: number;
+  retweetToTweetRatioScore?: number | null;
   /**
    * Menções únicas (proporção de quantas menções únicas são feitas)
    */
