@@ -62,7 +62,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
       Config.ruleConfig.maxUniqueMentionRatio,
     );
   }
-    
+
   private calculateRetweetToTweetRatioScore(): number | null {
     if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
     return (
