@@ -1,3 +1,4 @@
+import { normalize } from 'common/Utils';
 import {
   AccountType,
   IProfileAnalysis,
@@ -11,7 +12,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   accountType?: AccountType;
   readonly followingToFollowerRatioScore?: number;
   readonly retweetToTweetRatioScore?: number | null;
-  mentionsPerUserScore?: number;
+  readonly mentionsPerUserScore?: number;
   tweetSizeAvgScore?: number;
   accountAgeScore?: number;
   hashtagUsageScore?: number;
@@ -27,7 +28,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.followingToFollowerRatioScore =
       this.calculateFollowingToFollowerRatio();
     this.retweetToTweetRatioScore = this.calculateRetweetToTweetRatioScore();
-    this.mentionsPerUserScore = props.mentionsPerUserScore;
+    this.mentionsPerUserScore = this.calculateUniqueMentionRatio();
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
     this.accountAgeScore = props.accountAgeScore;
     this.hashtagUsageScore = props.hashtagUsageScore;
@@ -49,6 +50,19 @@ export class ProfileAnalysis implements IProfileAnalysis {
     return Math.min(ratio, Config.ruleConfig.maxFFRatio);
   }
 
+  private calculateUniqueMentionRatio(): number | null {
+    if (this.profileData.timelineSampleFullSize === 0) return null; // nao considera essa heuristica pra timelinse vazias
+
+    const totalMentions = this.profileData.timelineSampleMentionCount;
+    const uniqueMentions = this.profileData.mentions.size;
+    if (totalMentions === 0) return 0;
+    return normalize(
+      uniqueMentions / totalMentions,
+      0,
+      Config.ruleConfig.maxUniqueMentionRatio,
+    );
+  }
+    
   private calculateRetweetToTweetRatioScore(): number | null {
     if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
     return (
