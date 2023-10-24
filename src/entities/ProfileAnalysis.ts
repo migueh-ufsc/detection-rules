@@ -5,6 +5,7 @@ import {
 } from 'contracts/entities/IProfileAnalysis';
 import { IProfileData } from 'contracts/entities/IProfileData';
 import { Config } from 'infra/config';
+import { distance } from 'fastest-levenshtein';
 
 export class ProfileAnalysis implements IProfileAnalysis {
   _id: string;
@@ -18,7 +19,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   readonly hashtagUsageScore?: number;
   readonly tweetCountToAccountAgeScore?: number;
   readonly descriptionTextSizeScore?: number;
-  similarityBetweenNameAndUsernameScore?: number;
+  readonly similarityBetweenNameAndUsernameScore?: number;
   numberToLetterRatioOnUsernameScore?: number;
   readonly avgTimeBetweenPostsScore?: number;
 
@@ -35,7 +36,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.tweetCountToAccountAgeScore = this.calculateTweetPerDay();
     this.descriptionTextSizeScore = props.descriptionTextSizeScore;
     this.similarityBetweenNameAndUsernameScore =
-      props.similarityBetweenNameAndUsernameScore;
+      this.calculateSimilarityBetweenNameAndUsername();
     this.numberToLetterRatioOnUsernameScore =
       props.numberToLetterRatioOnUsernameScore;
     this.avgTimeBetweenPostsScore = this.calculateAverageTimeBetweenTweets(); // in seconds
@@ -82,6 +83,10 @@ export class ProfileAnalysis implements IProfileAnalysis {
       this.profileData.timelineSampleRetweetSize /
       this.profileData.timelineSampleFullSize
     );
+  }
+
+  private calculateSimilarityBetweenNameAndUsername(): number {
+    return distance(this.profileData.name, this.profileData.username);
   }
 
   private calculateTweetPerDay(): number | null {
