@@ -16,7 +16,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   readonly tweetSizeAvgScore?: number;
   readonly accountAgeScore?: number;
   readonly hashtagUsageScore?: number;
-  tweetCountToAccountAgeScore?: number;
+  readonly tweetCountToAccountAgeScore?: number;
   readonly descriptionTextSizeScore?: number;
   similarityBetweenNameAndUsernameScore?: number;
   numberToLetterRatioOnUsernameScore?: number;
@@ -32,7 +32,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
     this.accountAgeScore = props.accountAgeScore;
     this.hashtagUsageScore = this.calculateUniqueHashtagRatio();
-    this.tweetCountToAccountAgeScore = props.tweetCountToAccountAgeScore;
+    this.tweetCountToAccountAgeScore = this.calculateTweetPerDay();
     this.descriptionTextSizeScore = props.descriptionTextSizeScore;
     this.similarityBetweenNameAndUsernameScore =
       props.similarityBetweenNameAndUsernameScore;
@@ -84,6 +84,11 @@ export class ProfileAnalysis implements IProfileAnalysis {
     );
   }
 
+  private calculateTweetPerDay(): number | null {
+    if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
+    return this.profileData.nTweet / this.profileData.accountAgeInDays;
+  }
+  
   private calculateAverageTimeBetweenTweets(): number | null {
     const { timelineSamplePostCreatedAtDates } = this.profileData;
 

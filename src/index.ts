@@ -8,8 +8,8 @@ import { ProfileAnalysisService } from 'services/ProfileAnalysisService';
 import { model } from 'mongoose';
 import { writeFileSync } from 'fs';
 
-const filename = 'avg-time-between-tweet.csv';
-const property = 'avgTimeBetweenPostsScore';
+const filename = 'tweet-count-to-age-ratio.csv';
+const property = 'tweetCountToAccountAgeScore';
 
 (async () => {
   await Promise.all([Database.init()]);
