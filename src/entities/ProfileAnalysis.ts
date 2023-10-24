@@ -20,7 +20,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   readonly descriptionTextSizeScore?: number;
   similarityBetweenNameAndUsernameScore?: number;
   numberToLetterRatioOnUsernameScore?: number;
-  avgTimeBetweenPostsScore?: number;
+  readonly avgTimeBetweenPostsScore?: number;
 
   constructor(props: IProfileAnalysis) {
     this.profileData = props.profileData;
@@ -38,7 +38,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
       props.similarityBetweenNameAndUsernameScore;
     this.numberToLetterRatioOnUsernameScore =
       props.numberToLetterRatioOnUsernameScore;
-    this.avgTimeBetweenPostsScore = props.avgTimeBetweenPostsScore;
+    this.avgTimeBetweenPostsScore = this.calculateAverageTimeBetweenTweets(); // in seconds
   }
 
   private calculateFollowingToFollowerRatio(): number {
@@ -82,5 +82,24 @@ export class ProfileAnalysis implements IProfileAnalysis {
       this.profileData.timelineSampleRetweetSize /
       this.profileData.timelineSampleFullSize
     );
+  }
+
+  private calculateAverageTimeBetweenTweets(): number | null {
+    const { timelineSamplePostCreatedAtDates } = this.profileData;
+
+    if (timelineSamplePostCreatedAtDates.length <= 1) return null;
+
+    const sortedDates = timelineSamplePostCreatedAtDates.sort(
+      (a, b) => new Date(a).getTime() - new Date(b).getTime(),
+    );
+
+    const totalDiff = sortedDates.reduce((acc, curr, i, arr) => {
+      if (i === 0) return acc;
+      return (
+        acc + (new Date(curr).getTime() - new Date(arr[i - 1]).getTime()) / 1000 // ms to s
+      );
+    }, 0);
+
+    return totalDiff / timelineSamplePostCreatedAtDates.length;
   }
 }
