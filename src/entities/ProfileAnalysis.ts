@@ -11,16 +11,25 @@ export class ProfileAnalysis implements IProfileAnalysis {
   _id: string;
   profileData: IProfileData;
   accountType?: AccountType;
+  // Proporção de seguidos para seguidores
   readonly followingToFollowerRatioScore?: number;
-  readonly retweetToTweetRatioScore?: number | null;
+  // Proporção de retweets entre os tweets da timeline
+  readonly retweetToTweetRatioScore?: number;
+  // Proporção de quantas menções únicas são feitas
   readonly mentionsPerUserScore?: number;
+  // Média do tamanho dos tweets
   readonly tweetSizeAvgScore?: number;
+  // Idade da conta em dias
   readonly accountAgeScore?: number;
+  // Proporção de utilização de hashtags
   readonly hashtagUsageScore?: number;
+  // Quantidade de tweets em relação a idade da conta
   readonly tweetCountToAccountAgeScore?: number;
   readonly descriptionTextSizeScore?: number;
+  // Média de tempo de postagem entre um tweet e outro
   readonly similarityBetweenNameAndUsernameScore?: number;
   numberToLetterRatioOnUsernameScore?: number;
+  // Similaridade entre o nome do usuário e o username
   readonly avgTimeBetweenPostsScore?: number;
 
   constructor(props: IProfileAnalysis) {
@@ -93,7 +102,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
     return this.profileData.nTweet / this.profileData.accountAgeInDays;
   }
-  
+
   private calculateAverageTimeBetweenTweets(): number | null {
     const { timelineSamplePostCreatedAtDates } = this.profileData;
 
