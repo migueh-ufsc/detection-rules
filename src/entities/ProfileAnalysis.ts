@@ -25,10 +25,8 @@ export class ProfileAnalysis implements IProfileAnalysis {
   readonly hashtagUsageScore?: number;
   // Quantidade de tweets em relação a idade da conta
   readonly tweetCountToAccountAgeScore?: number;
-  readonly descriptionTextSizeScore?: number;
   // Média de tempo de postagem entre um tweet e outro
   readonly similarityBetweenNameAndUsernameScore?: number;
-  numberToLetterRatioOnUsernameScore?: number;
   // Similaridade entre o nome do usuário e o username
   readonly avgTimeBetweenPostsScore?: number;
 
@@ -43,11 +41,8 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.accountAgeScore = props.accountAgeScore;
     this.hashtagUsageScore = this.calculateUniqueHashtagRatio();
     this.tweetCountToAccountAgeScore = this.calculateTweetPerDay();
-    this.descriptionTextSizeScore = props.descriptionTextSizeScore;
     this.similarityBetweenNameAndUsernameScore =
       this.calculateSimilarityBetweenNameAndUsername();
-    this.numberToLetterRatioOnUsernameScore =
-      props.numberToLetterRatioOnUsernameScore;
     this.avgTimeBetweenPostsScore = this.calculateAverageTimeBetweenTweets(); // in seconds
   }
 
