@@ -17,11 +17,11 @@ export class ProfileAnalysis implements IProfileAnalysis {
   readonly tweetSizeAvgScore?: number;
   readonly accountAgeScore?: number;
   readonly hashtagUsageScore?: number;
-  tweetCountToAccountAgeScore?: number;
+  readonly tweetCountToAccountAgeScore?: number;
   readonly descriptionTextSizeScore?: number;
   readonly similarityBetweenNameAndUsernameScore?: number;
   numberToLetterRatioOnUsernameScore?: number;
-  avgTimeBetweenPostsScore?: number;
+  readonly avgTimeBetweenPostsScore?: number;
 
   constructor(props: IProfileAnalysis) {
     this.profileData = props.profileData;
@@ -33,13 +33,13 @@ export class ProfileAnalysis implements IProfileAnalysis {
     this.tweetSizeAvgScore = props.tweetSizeAvgScore;
     this.accountAgeScore = props.accountAgeScore;
     this.hashtagUsageScore = this.calculateUniqueHashtagRatio();
-    this.tweetCountToAccountAgeScore = props.tweetCountToAccountAgeScore;
+    this.tweetCountToAccountAgeScore = this.calculateTweetPerDay();
     this.descriptionTextSizeScore = props.descriptionTextSizeScore;
     this.similarityBetweenNameAndUsernameScore =
       this.calculateSimilarityBetweenNameAndUsername();
     this.numberToLetterRatioOnUsernameScore =
       props.numberToLetterRatioOnUsernameScore;
-    this.avgTimeBetweenPostsScore = props.avgTimeBetweenPostsScore;
+    this.avgTimeBetweenPostsScore = this.calculateAverageTimeBetweenTweets(); // in seconds
   }
 
   private calculateFollowingToFollowerRatio(): number {
@@ -87,5 +87,29 @@ export class ProfileAnalysis implements IProfileAnalysis {
 
   private calculateSimilarityBetweenNameAndUsername(): number {
     return distance(this.profileData.name, this.profileData.username);
+  }
+
+  private calculateTweetPerDay(): number | null {
+    if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
+    return this.profileData.nTweet / this.profileData.accountAgeInDays;
+  }
+  
+  private calculateAverageTimeBetweenTweets(): number | null {
+    const { timelineSamplePostCreatedAtDates } = this.profileData;
+
+    if (timelineSamplePostCreatedAtDates.length <= 1) return null;
+
+    const sortedDates = timelineSamplePostCreatedAtDates.sort(
+      (a, b) => new Date(a).getTime() - new Date(b).getTime(),
+    );
+
+    const totalDiff = sortedDates.reduce((acc, curr, i, arr) => {
+      if (i === 0) return acc;
+      return (
+        acc + (new Date(curr).getTime() - new Date(arr[i - 1]).getTime()) / 1000 // ms to s
+      );
+    }, 0);
+
+    return totalDiff / timelineSamplePostCreatedAtDates.length;
   }
 }
