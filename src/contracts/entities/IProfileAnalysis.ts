@@ -38,17 +38,9 @@ export interface IProfileAnalysis {
    */
   tweetCountToAccountAgeScore?: number;
   /**
-   * Tamanho do texto da descrição
-   */
-  descriptionTextSizeScore?: number;
-  /**
    * Similaridade entre o nome do usuário e o username
    */
   similarityBetweenNameAndUsernameScore?: number;
-  /**
-   * Proporção de números para letras no nome de usuário (vários números indicam user padrão)
-   */
-  numberToLetterRatioOnUsernameScore?: number;
   /**
    * Média de tempo de postagem entre um tweet e outro
    */
