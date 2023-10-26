@@ -13,8 +13,6 @@ export class GenerateProfileDataUseCase implements BaseUseCase {
     try {
       const userData = await TwitterIntegrationService.getUserData(input);
 
-      if (await this.profileDataService.exists(userData.username)) return;
-
       const profileData = new ProfileData({
         name: userData.name,
         username: userData.username,
@@ -26,6 +24,9 @@ export class GenerateProfileDataUseCase implements BaseUseCase {
         tweets: userData.sampleTimeline,
         createdAt: userData.accountCreatedAt,
       });
+
+      if (await this.profileDataService.exists(userData.username))
+        return profileData;
 
       await this.profileDataService.create(profileData);
       return profileData;
