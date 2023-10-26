@@ -6,7 +6,10 @@ import { TwitterIntegrationService } from 'integrations/twitter-integration/Twit
 export class GenerateProfileDataUseCase implements BaseUseCase {
   constructor(private readonly profileDataService: ProfileDataService) {}
 
-  async execute(input: { username?: string; id?: string }): Promise<void> {
+  async execute(input: {
+    username?: string;
+    id?: string;
+  }): Promise<ProfileData> {
     try {
       const userData = await TwitterIntegrationService.getUserData(input);
 
@@ -25,6 +28,7 @@ export class GenerateProfileDataUseCase implements BaseUseCase {
       });
 
       await this.profileDataService.create(profileData);
+      return profileData;
     } catch (error) {
       console.error(error);
       throw error;
