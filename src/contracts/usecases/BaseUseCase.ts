@@ -1,3 +1,3 @@
 export interface BaseUseCase {
-  execute: (input: any) => Promise<void>;
+  execute: (input: any) => Promise<any>;
 }
