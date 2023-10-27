@@ -6,11 +6,12 @@ import { TwitterIntegrationService } from 'integrations/twitter-integration/Twit
 export class GenerateProfileDataUseCase implements BaseUseCase {
   constructor(private readonly profileDataService: ProfileDataService) {}
 
-  async execute(input: { username?: string; id?: string }): Promise<void> {
+  async execute(input: {
+    username?: string;
+    id?: string;
+  }): Promise<ProfileData> {
     try {
       const userData = await TwitterIntegrationService.getUserData(input);
-
-      if (await this.profileDataService.exists(userData.username)) return;
 
       const profileData = new ProfileData({
         name: userData.name,
@@ -24,7 +25,11 @@ export class GenerateProfileDataUseCase implements BaseUseCase {
         createdAt: userData.accountCreatedAt,
       });
 
+      if (await this.profileDataService.exists(userData.username))
+        return profileData;
+
       await this.profileDataService.create(profileData);
+      return profileData;
     } catch (error) {
       console.error(error);
       throw error;
