@@ -52,7 +52,8 @@ export class ProfileAnalysis implements IProfileAnalysis {
         ? this.profileData.nFollowing / this.profileData.nFollower
         : Config.ruleConfig.maxFFRatio; // Evita a divisão por zero
 
-    return Math.min(ratio, Config.ruleConfig.maxFFRatio);
+    return ratio;
+    // return Math.min(ratio, Config.ruleConfig.maxFFRatio);
   }
 
   private calculateUniqueHashtagRatio(): number | null {
@@ -74,11 +75,12 @@ export class ProfileAnalysis implements IProfileAnalysis {
     const totalMentions = this.profileData.timelineSampleMentionCount;
     const uniqueMentions = this.profileData.mentions.size;
     if (totalMentions === 0) return 0;
-    return normalize(
-      uniqueMentions / totalMentions,
-      0,
-      Config.ruleConfig.maxUniqueMentionRatio,
-    );
+    // return normalize(
+    //   uniqueMentions / totalMentions,
+    //   0,
+    //   Config.ruleConfig.maxUniqueMentionRatio,
+    // );
+    return uniqueMentions / totalMentions;
   }
 
   private calculateRetweetToTweetRatio(): number | null {
