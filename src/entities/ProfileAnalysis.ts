@@ -87,7 +87,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
   }
 
   private calculateSimilarityBetweenNameAndUsername(): number {
-    return distance(this.profileData.name, this.profileData.username);
+    return Math.log1p(distance(this.profileData.name, this.profileData.username));
   }
 
   private calculateTweetPerDay(): number | null {
