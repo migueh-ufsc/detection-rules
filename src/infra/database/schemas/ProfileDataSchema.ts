@@ -1,5 +1,5 @@
 import { IProfileData } from 'contracts/entities/IProfileData';
-import mongoose, { model, Schema } from 'mongoose';
+import { model, Schema } from 'mongoose';
 import { schemaOptions } from '../SchemaOptions';
 
 export const ProfileDataSchema = new Schema<IProfileData>(
@@ -25,8 +25,8 @@ export const ProfileDataSchema = new Schema<IProfileData>(
     timelineSampleHashtagCount: { type: Number },
     timelineSampleMentionCount: { type: Number },
     timelineSamplePostCreatedAtDates: [{ type: Date }],
-    hashtags: { type: mongoose.SchemaTypes.Map, of: Number },
-    mentions: { type: mongoose.SchemaTypes.Map, of: Number },
+    hashtags: { type: Object },
+    mentions: { type: Object },
     retweets: { type: Object },
   },
   schemaOptions,

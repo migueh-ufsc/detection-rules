@@ -9,7 +9,7 @@ export class GenerateProfileAnalysisUseCase implements BaseUseCase {
     private readonly profileAnalysisService: ProfileAnalysisService,
   ) {}
 
-  async execute(username: string): Promise<void> {
+  async execute(username: string): Promise<ProfileAnalysis> {
     try {
       const profileData = await this.profileDataService.findByUsername(
         username,
@@ -20,11 +20,14 @@ export class GenerateProfileAnalysisUseCase implements BaseUseCase {
           profileData._id,
         );
 
-      if (geProfileAnalysis && geProfileAnalysis.length) return;
+      if (geProfileAnalysis && geProfileAnalysis.length)
+        return geProfileAnalysis[0] as ProfileAnalysis;
 
       const profileAnalysis = new ProfileAnalysis({ profileData });
 
       await this.profileAnalysisService.create(profileAnalysis);
+
+      return profileAnalysis;
     } catch (error) {
       console.error(error);
       throw error;

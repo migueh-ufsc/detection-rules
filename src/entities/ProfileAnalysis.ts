@@ -37,8 +37,9 @@ export class ProfileAnalysis implements IProfileAnalysis {
       this.calculateFollowingToFollowerRatio();
     this.retweetToTweetRatioScore = this.calculateRetweetToTweetRatio();
     this.mentionsPerUserScore = this.calculateUniqueMentionRatio();
-    this.tweetSizeAvgScore = props.tweetSizeAvgScore;
-    this.accountAgeScore = props.accountAgeScore;
+    this.tweetSizeAvgScore =
+      props.profileData.timelineSampleUserTweetTextSizeAvg;
+    this.accountAgeScore = props.profileData.accountAgeInDays;
     this.hashtagUsageScore = this.calculateUniqueHashtagRatio();
     this.tweetCountToAccountAgeScore = this.calculateTweetPerDay();
     this.similarityBetweenNameAndUsernameScore =
@@ -60,7 +61,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     if (this.profileData.timelineSampleFullSize === 0) return null;
 
     const totalHashtags = this.profileData.timelineSampleHashtagCount;
-    const uniqueHashtags = this.profileData.hashtags.size;
+    const uniqueHashtags = Object.keys(this.profileData.hashtags).length;
 
     if (totalHashtags === 0) {
       return 0; // para evitar divisão por zero
@@ -73,7 +74,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
     if (this.profileData.timelineSampleFullSize === 0) return null; // nao considera essa heuristica pra timelinse vazias
 
     const totalMentions = this.profileData.timelineSampleMentionCount;
-    const uniqueMentions = this.profileData.mentions.size;
+    const uniqueMentions = Object.keys(this.profileData.mentions).length;
     if (totalMentions === 0) return 0;
     // return normalize(
     //   uniqueMentions / totalMentions,
