@@ -37,9 +37,8 @@ export class ProfileAnalysis implements IProfileAnalysis {
       this.calculateFollowingToFollowerRatio();
     this.retweetToTweetRatioScore = this.calculateRetweetToTweetRatio();
     this.mentionsPerUserScore = this.calculateUniqueMentionRatio();
-    this.tweetSizeAvgScore =
-      props.profileData.timelineSampleUserTweetTextSizeAvg;
-    this.accountAgeScore = props.profileData.accountAgeInDays;
+    this.tweetSizeAvgScore = Math.log1p(this.profileData.timelineSampleUserTweetTextSizeAvg);
+    this.accountAgeScore = Math.log1p(props.profileData.accountAgeInDays);
     this.hashtagUsageScore = this.calculateUniqueHashtagRatio();
     this.tweetCountToAccountAgeScore = this.calculateTweetPerDay();
     this.similarityBetweenNameAndUsernameScore =
@@ -53,8 +52,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
         ? this.profileData.nFollowing / this.profileData.nFollower
         : Config.ruleConfig.maxFFRatio; // Evita a divisão por zero
 
-    return ratio;
-    // return Math.min(ratio, Config.ruleConfig.maxFFRatio);
+    return Math.log1p(Math.min(ratio, Config.ruleConfig.maxFFRatio));
   }
 
   private calculateUniqueHashtagRatio(): number | null {
@@ -67,7 +65,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
       return 0; // para evitar divisão por zero
     }
 
-    return uniqueHashtags / totalHashtags;
+    return Math.log1p(uniqueHashtags / totalHashtags);
   }
 
   private calculateUniqueMentionRatio(): number | null {
@@ -76,19 +74,15 @@ export class ProfileAnalysis implements IProfileAnalysis {
     const totalMentions = this.profileData.timelineSampleMentionCount;
     const uniqueMentions = Object.keys(this.profileData.mentions).length;
     if (totalMentions === 0) return 0;
-    // return normalize(
-    //   uniqueMentions / totalMentions,
-    //   0,
-    //   Config.ruleConfig.maxUniqueMentionRatio,
-    // );
-    return uniqueMentions / totalMentions;
+
+    return Math.log1p(uniqueMentions / totalMentions);
   }
 
   private calculateRetweetToTweetRatio(): number | null {
     if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
-    return (
+    return Math.log1p(
       this.profileData.timelineSampleRetweetSize /
-      this.profileData.timelineSampleFullSize
+        this.profileData.timelineSampleFullSize,
     );
   }
 
@@ -98,7 +92,7 @@ export class ProfileAnalysis implements IProfileAnalysis {
 
   private calculateTweetPerDay(): number | null {
     if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
-    return this.profileData.nTweet / this.profileData.accountAgeInDays;
+    return Math.log1p(this.profileData.nTweet / this.profileData.accountAgeInDays);
   }
 
   private calculateAverageTimeBetweenTweets(): number | null {
@@ -117,6 +111,6 @@ export class ProfileAnalysis implements IProfileAnalysis {
       );
     }, 0);
 
-    return totalDiff / timelineSamplePostCreatedAtDates.length;
+    return Math.log1p(totalDiff / timelineSamplePostCreatedAtDates.length);
   }
 }
