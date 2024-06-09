@@ -1,4 +1,3 @@
-// import { normalize } from 'common/Utils';
 import {
   AccountType,
   IProfileAnalysis,
@@ -37,7 +36,9 @@ export class ProfileAnalysis implements IProfileAnalysis {
       this.calculateFollowingToFollowerRatio();
     this.retweetToTweetRatioScore = this.calculateRetweetToTweetRatio();
     this.mentionsPerUserScore = this.calculateUniqueMentionRatio();
-    this.tweetSizeAvgScore = Math.log1p(this.profileData.timelineSampleUserTweetTextSizeAvg);
+    this.tweetSizeAvgScore = Math.log1p(
+      this.profileData.timelineSampleUserTweetTextSizeAvg,
+    );
     this.accountAgeScore = Math.log1p(props.profileData.accountAgeInDays);
     this.hashtagUsageScore = this.calculateUniqueHashtagRatio();
     this.tweetCountToAccountAgeScore = this.calculateTweetPerDay();
@@ -87,12 +88,16 @@ export class ProfileAnalysis implements IProfileAnalysis {
   }
 
   private calculateSimilarityBetweenNameAndUsername(): number {
-    return Math.log1p(distance(this.profileData.name, this.profileData.username));
+    return Math.log1p(
+      distance(this.profileData.name, this.profileData.username),
+    );
   }
 
   private calculateTweetPerDay(): number | null {
     if (this.profileData.timelineSampleFullSize === 0) return null; // desconsidera estatistica se nao tiver tweets
-    return Math.log1p(this.profileData.nTweet / this.profileData.accountAgeInDays);
+    return Math.log1p(
+      this.profileData.nTweet / this.profileData.accountAgeInDays,
+    );
   }
 
   private calculateAverageTimeBetweenTweets(): number | null {
