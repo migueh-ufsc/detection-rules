@@ -36,7 +36,7 @@ export class CategorizationUseCase implements BaseUseCase {
   }: {
     id?: string;
     username?: string;
-  }): Promise<void> {
+  }): Promise<IProfileAnalysis> {
     if (!id && !username) {
       throw new Error('User ID or username is required');
     }
@@ -47,7 +47,8 @@ export class CategorizationUseCase implements BaseUseCase {
       const profileAnalysis = await this.generateProfileAnalysisUseCase.execute(
         username,
       );
-      await this.categorize(config, profileAnalysis);
+      const updatedAnalysis = await this.categorize(config, profileAnalysis);
+      return updatedAnalysis;
     } catch (error) {
       logger.error('Error while categorizing user');
       logger.error(error);
@@ -83,5 +84,11 @@ export class CategorizationUseCase implements BaseUseCase {
         accountScore: finalScore,
       },
     );
+
+    const [updatedAnalysis] = await this.profileAnalysisService.find({
+      _id: profileAnalysis._id,
+    });
+
+    return updatedAnalysis;
   }
 }
