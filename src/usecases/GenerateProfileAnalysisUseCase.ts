@@ -2,6 +2,7 @@ import { BaseUseCase } from 'contracts/usecases/BaseUseCase';
 import { ProfileDataService } from 'services/ProfileDataService';
 import { ProfileAnalysis } from 'entities/ProfileAnalysis';
 import { ProfileAnalysisService } from 'services/ProfileAnalysisService';
+import { IProfileAnalysis } from 'contracts/entities/IProfileAnalysis';
 
 export class GenerateProfileAnalysisUseCase implements BaseUseCase {
   constructor(
@@ -9,7 +10,7 @@ export class GenerateProfileAnalysisUseCase implements BaseUseCase {
     private readonly profileAnalysisService: ProfileAnalysisService,
   ) {}
 
-  async execute(username: string): Promise<ProfileAnalysis> {
+  async execute(username: string): Promise<IProfileAnalysis> {
     try {
       const profileData = await this.profileDataService.findByUsername(
         username,

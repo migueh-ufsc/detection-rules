@@ -9,6 +9,7 @@ export interface IProfileAnalysis {
   _id?: string;
   profileData: IProfileData;
   accountType?: AccountType;
+  accountScore?: number;
   /**
    * Proporção de seguidos para seguidores (fg:fr)
    */
@@ -45,6 +46,8 @@ export interface IProfileAnalysis {
    * Média de tempo de postagem entre um tweet e outro
    */
   avgTimeBetweenPostsScore?: number;
+
+  [key: string]: any;
 }
 
 export enum AccountType {
