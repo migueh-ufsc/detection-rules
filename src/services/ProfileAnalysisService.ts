@@ -48,7 +48,7 @@ export class ProfileAnalysisService extends BaseService<IProfileAnalysis> {
   ): Promise<IProfileAnalysis[]> {
     try {
       const response = await this.model.find(query).populate('profileData');
-      return response;
+      return response as unknown as IProfileAnalysis[];
     } catch (error) {
       logger.error(
         'Error while trying to find profile analysis by username on database',
