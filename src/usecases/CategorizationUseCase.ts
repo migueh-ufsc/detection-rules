@@ -56,6 +56,7 @@ export class CategorizationUseCase implements BaseUseCase {
     } catch (error) {
       logger.error('Error while categorizing user');
       logger.error(error);
+      throw error;
     }
   }
 

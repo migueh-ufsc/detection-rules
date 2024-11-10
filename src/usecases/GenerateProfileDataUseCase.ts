@@ -2,6 +2,7 @@ import { BaseUseCase } from 'contracts/usecases/BaseUseCase';
 import { ProfileData } from 'entities/ProfileData';
 import { ProfileDataService } from 'services/ProfileDataService';
 import { TwitterIntegrationService } from 'integrations/twitter-integration/TwitterIntegrationService';
+import { logger } from 'infra/logger';
 
 export class GenerateProfileDataUseCase implements BaseUseCase {
   // eslint-disable-next-line prettier/prettier
@@ -32,7 +33,20 @@ export class GenerateProfileDataUseCase implements BaseUseCase {
         userData.username,
       );
 
-      if (!force && profileDataExists) return profileData;
+      if (profileDataExists) {
+        if (force) {
+          logger.info(
+            'Flag de force passada, atualizando profile data para o usuário ' +
+              userData.username,
+          );
+          await this.profileDataService.update(
+            { username: profileData.username },
+            profileData,
+          );
+        }
+
+        return profileData;
+      }
 
       await this.profileDataService.create(profileData);
       return profileData;
