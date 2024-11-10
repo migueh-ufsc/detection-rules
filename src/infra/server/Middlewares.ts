@@ -1,5 +1,5 @@
-import { HttpError } from '../../common/errors/HttpError';
-import { BaseController } from '../../contracts/controllers/BaseController';
+import { HttpError } from 'common/errors/HttpError';
+import { BaseController } from 'contracts/controllers/BaseController';
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 
 export const requestHandlerMidd = (

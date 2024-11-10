@@ -1,7 +1,7 @@
 import {
   AccountType,
   IProfileAnalysis,
-} from '../../../contracts/entities/IProfileAnalysis';
+} from 'contracts/entities/IProfileAnalysis';
 import { model, Schema, Types } from 'mongoose';
 import { schemaOptions } from '../SchemaOptions';
 

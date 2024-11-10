@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
-import { BaseUseCase } from '../contracts/usecases/BaseUseCase';
+import { BaseUseCase } from 'contracts/usecases/BaseUseCase';
 import { GenerateProfileDataUseCase } from './GenerateProfileDataUseCase';
-import { CategorizationConfigService } from '../services/CategorizationConfigService';
+import { CategorizationConfigService } from 'services/CategorizationConfigService';
 import { GenerateProfileAnalysisUseCase } from './GenerateProfileAnalysisUseCase';
-import { logger } from '../infra/logger';
-import { normalize } from '../common/Utils';
-import { ICategorizationConfig } from '../contracts/entities/ICategorizationConfig';
-import { IProfileAnalysis } from '../contracts/entities/IProfileAnalysis';
-import { ProfileAnalysisService } from '../services/ProfileAnalysisService';
+import { logger } from 'infra/logger';
+import { normalize } from 'common/Utils';
+import { ICategorizationConfig } from 'contracts/entities/ICategorizationConfig';
+import { IProfileAnalysis } from 'contracts/entities/IProfileAnalysis';
+import { ProfileAnalysisService } from 'services/ProfileAnalysisService';
 
 const skipFields = [
   '_id',
@@ -29,7 +29,7 @@ export class CategorizationUseCase implements BaseUseCase {
     private readonly generateProfileDataUseCase: GenerateProfileDataUseCase,
     private readonly generateProfileAnalysisUseCase: GenerateProfileAnalysisUseCase,
     private readonly profileAnalysisService: ProfileAnalysisService,
-  ) { }
+  ) {}
 
   async execute({
     id,

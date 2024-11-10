@@ -1,4 +1,4 @@
-import { IHttpError } from '../../contracts/server/Http';
+import { IHttpError } from 'contracts/server/Http';
 
 export class HttpError implements IHttpError {
   readonly status: number;

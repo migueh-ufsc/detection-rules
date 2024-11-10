@@ -1,7 +1,7 @@
 import bodyParser from 'body-parser';
 import express, { Express } from 'express';
-import { Config } from '../../infra/config';
-import { logger } from '../../infra/logger';
+import { Config } from 'infra/config';
+import { logger } from 'infra/logger';
 import { initRoutes } from './Routes';
 
 class Server {

@@ -1,8 +1,8 @@
-import { HttpError } from '../common/errors/HttpError';
-import { BaseController } from '../contracts/controllers/BaseController';
-import { HttpRequest, HttpResponse } from '../contracts/server/Http';
-import { logger } from '../infra/logger';
-import { CategorizationUseCase } from '../usecases/CategorizationUseCase';
+import { HttpError } from 'common/errors/HttpError';
+import { BaseController } from 'contracts/controllers/BaseController';
+import { HttpRequest, HttpResponse } from 'contracts/server/Http';
+import { logger } from 'infra/logger';
+import { CategorizationUseCase } from 'usecases/CategorizationUseCase';
 interface CategorizeHttpRequest extends HttpRequest {
   body: {
     username?: string;

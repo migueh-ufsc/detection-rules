@@ -1,5 +1,5 @@
 import { BaseUseCase } from 'contracts/usecases/BaseUseCase';
-import { ProfileData } from '../entities/ProfileData';
+import { ProfileData } from 'entities/ProfileData';
 import { ProfileDataService } from 'services/ProfileDataService';
 import { TwitterIntegrationService } from 'integrations/twitter-integration/TwitterIntegrationService';
 

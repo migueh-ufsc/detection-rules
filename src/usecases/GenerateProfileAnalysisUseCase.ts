@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { BaseUseCase } from '../contracts/usecases/BaseUseCase';
-import { ProfileDataService } from '../services/ProfileDataService';
-import { ProfileAnalysis } from '../entities/ProfileAnalysis';
-import { ProfileAnalysisService } from '../services/ProfileAnalysisService';
-import { IProfileAnalysis } from '../contracts/entities/IProfileAnalysis';
+import { BaseUseCase } from 'contracts/usecases/BaseUseCase';
+import { ProfileDataService } from 'services/ProfileDataService';
+import { ProfileAnalysis } from 'entities/ProfileAnalysis';
+import { ProfileAnalysisService } from 'services/ProfileAnalysisService';
+import { IProfileAnalysis } from 'contracts/entities/IProfileAnalysis';
 
 export class GenerateProfileAnalysisUseCase implements BaseUseCase {
   constructor(
