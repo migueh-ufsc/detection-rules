@@ -29,7 +29,7 @@ export class CategorizationUseCase implements BaseUseCase {
     private readonly generateProfileDataUseCase: GenerateProfileDataUseCase,
     private readonly generateProfileAnalysisUseCase: GenerateProfileAnalysisUseCase,
     private readonly profileAnalysisService: ProfileAnalysisService,
-  ) { }
+  ) {}
 
   async execute({
     id,

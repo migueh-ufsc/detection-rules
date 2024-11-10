@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm run format && npm run lint && tsc --noEmit -p .",
+    "build": "npm run format && npm run lint && tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "node dist/index.js",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",

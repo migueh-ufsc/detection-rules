@@ -5,7 +5,7 @@ import { TwitterIntegrationService } from 'integrations/twitter-integration/Twit
 
 export class GenerateProfileDataUseCase implements BaseUseCase {
   // eslint-disable-next-line prettier/prettier
-  constructor(private readonly profileDataService: ProfileDataService) { }
+  constructor(private readonly profileDataService: ProfileDataService) {}
 
   async execute(input: {
     username?: string;
