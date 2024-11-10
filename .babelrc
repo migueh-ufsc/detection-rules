@@ -1,0 +1,26 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-typescript"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "common": "./src/common",
+          "contracts": "./src/contracts",
+          "controllers": "./src/controllers",
+          "entities": "./src/entities",
+          "infra": "./src/infra",
+          "services": "./src/services",
+          "usecases": "./src/usecases",
+          "integrations": "./src/integrations"
+        }
+      }
+    ]
+  ]
+}

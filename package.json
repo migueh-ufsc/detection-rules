@@ -6,7 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm run format && npm run lint && tsc",
+    "build": "npm run format && npm run lint && tsc --noEmit -p . && rimraf dist && babel src --extensions \".ts,.js\" --out-dir dist --copy-files --no-copy-ignored --source-maps",
+    "build:production": "babel src --extensions \".ts,.js\" --out-dir dist --copy-files --no-copy-ignored",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "node dist/index.js",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
@@ -29,11 +30,17 @@
     "node": "20"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.6",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@babel/register": "^7.25.9",
     "@types/express": "^4.17.21",
     "@types/jest": "27.0.2",
     "@types/node": "^20.8.2",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.11.0",
+    "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^4.2.1",
