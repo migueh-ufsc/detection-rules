@@ -1,4 +1,4 @@
-import { logger } from '../infra/logger';
+import { logger } from 'infra/logger';
 import { HydratedDocument, Model, FilterQuery, UpdateQuery } from 'mongoose';
 
 export class BaseService<T> {

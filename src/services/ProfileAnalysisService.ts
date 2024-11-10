@@ -1,6 +1,6 @@
-import { IProfileAnalysis } from '../contracts/entities/IProfileAnalysis';
-import { ProfileAnalysisModel } from '../infra/database/schemas/ProfileAnalysisSchema';
-import { logger } from '../infra/logger';
+import { IProfileAnalysis } from 'contracts/entities/IProfileAnalysis';
+import { ProfileAnalysisModel } from 'infra/database/schemas/ProfileAnalysisSchema';
+import { logger } from 'infra/logger';
 import { BaseService } from './BaseService';
 import { FilterQuery } from 'mongoose';
 

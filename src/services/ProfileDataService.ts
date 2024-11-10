@@ -1,6 +1,6 @@
-import { IProfileData } from '../contracts/entities/IProfileData';
-import { ProfileDataModel } from '../infra/database/schemas/ProfileDataSchema';
-import { logger } from '../infra/logger';
+import { IProfileData } from 'contracts/entities/IProfileData';
+import { ProfileDataModel } from 'infra/database/schemas/ProfileDataSchema';
+import { logger } from 'infra/logger';
 import { BaseService } from './BaseService';
 
 export class ProfileDataService extends BaseService<IProfileData> {
