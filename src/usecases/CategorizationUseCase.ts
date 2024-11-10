@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { BaseUseCase } from 'contracts/usecases/BaseUseCase';
 import { GenerateProfileDataUseCase } from './GenerateProfileDataUseCase';
 import { CategorizationConfigService } from 'services/CategorizationConfigService';
@@ -28,14 +29,16 @@ export class CategorizationUseCase implements BaseUseCase {
     private readonly generateProfileDataUseCase: GenerateProfileDataUseCase,
     private readonly generateProfileAnalysisUseCase: GenerateProfileAnalysisUseCase,
     private readonly profileAnalysisService: ProfileAnalysisService,
-  ) {}
+  ) { }
 
   async execute({
     id,
     username,
+    force = false,
   }: {
     id?: string;
     username?: string;
+    force?: boolean;
   }): Promise<IProfileAnalysis> {
     if (!id && !username) {
       throw new Error('User ID or username is required');
@@ -43,9 +46,10 @@ export class CategorizationUseCase implements BaseUseCase {
 
     try {
       const [config] = await this.configService.find({});
-      await this.generateProfileDataUseCase.execute({ id, username });
+      await this.generateProfileDataUseCase.execute({ id, username, force });
       const profileAnalysis = await this.generateProfileAnalysisUseCase.execute(
         username,
+        force,
       );
       const updatedAnalysis = await this.categorize(config, profileAnalysis);
       return updatedAnalysis;

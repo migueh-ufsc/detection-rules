@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { BaseUseCase } from 'contracts/usecases/BaseUseCase';
 import { ProfileDataService } from 'services/ProfileDataService';
 import { ProfileAnalysis } from 'entities/ProfileAnalysis';
@@ -8,9 +9,9 @@ export class GenerateProfileAnalysisUseCase implements BaseUseCase {
   constructor(
     private readonly profileDataService: ProfileDataService,
     private readonly profileAnalysisService: ProfileAnalysisService,
-  ) {}
+  ) { }
 
-  async execute(username: string): Promise<IProfileAnalysis> {
+  async execute(username: string, force?: boolean): Promise<IProfileAnalysis> {
     try {
       const profileData = await this.profileDataService.findByUsername(
         username,
@@ -21,7 +22,7 @@ export class GenerateProfileAnalysisUseCase implements BaseUseCase {
           profileData._id,
         );
 
-      if (geProfileAnalysis && geProfileAnalysis.length)
+      if (!force && geProfileAnalysis && geProfileAnalysis.length)
         return geProfileAnalysis[0] as ProfileAnalysis;
 
       const profileAnalysis = new ProfileAnalysis({ profileData });

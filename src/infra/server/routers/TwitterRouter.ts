@@ -34,7 +34,7 @@ router.post(
 );
 
 router.post(
-  '/categorize/:username',
+  '/categorize/',
   requestHandlerMidd(
     new Categorize(
       new CategorizationUseCase(

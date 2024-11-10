@@ -4,13 +4,16 @@ import { ProfileDataService } from 'services/ProfileDataService';
 import { TwitterIntegrationService } from 'integrations/twitter-integration/TwitterIntegrationService';
 
 export class GenerateProfileDataUseCase implements BaseUseCase {
-  constructor(private readonly profileDataService: ProfileDataService) {}
+  // eslint-disable-next-line prettier/prettier
+  constructor(private readonly profileDataService: ProfileDataService) { }
 
   async execute(input: {
     username?: string;
     id?: string;
+    force?: boolean;
   }): Promise<ProfileData> {
     try {
+      const { force } = input;
       const userData = await TwitterIntegrationService.getUserData(input);
 
       const profileData = new ProfileData({
@@ -25,8 +28,11 @@ export class GenerateProfileDataUseCase implements BaseUseCase {
         createdAt: userData.accountCreatedAt,
       });
 
-      if (await this.profileDataService.exists(userData.username))
-        return profileData;
+      const profileDataExists = await this.profileDataService.exists(
+        userData.username,
+      );
+
+      if (!force && profileDataExists) return profileData;
 
       await this.profileDataService.create(profileData);
       return profileData;
