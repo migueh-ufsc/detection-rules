@@ -1,6 +1,7 @@
 import { HttpError } from 'common/errors/HttpError';
 import { BaseController } from 'contracts/controllers/BaseController';
 import { Request, Response, NextFunction, RequestHandler } from 'express';
+import { logger } from 'infra/logger';
 
 export const requestHandlerMidd = (
   controller: BaseController,
@@ -20,4 +21,9 @@ export const requestHandlerMidd = (
       next();
     }
   };
+};
+
+export const loggerMiddleware: RequestHandler = (req, res, next) => {
+  logger.info(`[${req.method}] ${req.url}`);
+  next();
 };

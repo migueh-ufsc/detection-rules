@@ -3,6 +3,7 @@ import express, { Express } from 'express';
 import { Config } from 'infra/config';
 import { logger } from 'infra/logger';
 import { initRoutes } from './Routes';
+import { loggerMiddleware } from './Middlewares';
 
 class Server {
   readonly app: Express = express();
@@ -15,6 +16,8 @@ class Server {
     this.app.listen(this.port, () => {
       logger.info('Server running on port ' + this.port);
     });
+
+    this.app.use(loggerMiddleware);
 
     initRoutes(this.app);
   }

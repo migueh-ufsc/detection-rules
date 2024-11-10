@@ -27,13 +27,11 @@ export class Categorize implements BaseController {
         body: analysis,
       };
     } catch (error) {
-      if (error.status) throw error;
-
       logger.error(error);
 
       throw new HttpError({
-        message: 'Falha ao categorizar',
-        status: 500,
+        message: `Falha ao categorizar: ${error.message}`,
+        status: error.status || 500,
       });
     }
   }
