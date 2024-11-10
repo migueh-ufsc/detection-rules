@@ -9,7 +9,7 @@ export class GenerateProfileAnalysisUseCase implements BaseUseCase {
   constructor(
     private readonly profileDataService: ProfileDataService,
     private readonly profileAnalysisService: ProfileAnalysisService,
-  ) { }
+  ) {}
 
   async execute(username: string, force?: boolean): Promise<IProfileAnalysis> {
     try {
