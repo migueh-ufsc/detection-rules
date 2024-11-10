@@ -1,5 +1,5 @@
-import { HttpRequest, HttpResponse } from 'contracts/server/Http';
-import { BaseUseCase } from 'contracts/usecases/BaseUseCase';
+import { HttpRequest, HttpResponse } from '../server/Http';
+import { BaseUseCase } from '../usecases/BaseUseCase';
 
 export interface BaseController {
   useCase: BaseUseCase;

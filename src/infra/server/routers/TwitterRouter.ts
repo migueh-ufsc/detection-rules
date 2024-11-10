@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import { requestHandlerMidd } from '../Middlewares';
-import { CreateProfileData } from 'controllers/CreateProfileData';
-import { GenerateProfileDataUseCase } from 'usecases/GenerateProfileDataUseCase';
-import { ProfileDataService } from 'services/ProfileDataService';
-import { CreateProfileAnalysis } from 'controllers/CreateProfileAnalysis';
-import { GenerateProfileAnalysisUseCase } from 'usecases/GenerateProfileAnalysisUseCase';
-import { ProfileAnalysisService } from 'services/ProfileAnalysisService';
-import { CategorizationConfigService } from 'services/CategorizationConfigService';
-import { CategorizationUseCase } from 'usecases/CategorizationUseCase';
-import { Categorize } from 'controllers/Categorize';
+import { CreateProfileData } from '../../../controllers/CreateProfileData';
+import { GenerateProfileDataUseCase } from '../../../usecases/GenerateProfileDataUseCase';
+import { ProfileDataService } from '../../../services/ProfileDataService';
+import { CreateProfileAnalysis } from '../../../controllers/CreateProfileAnalysis';
+import { GenerateProfileAnalysisUseCase } from '../../../usecases/GenerateProfileAnalysisUseCase';
+import { ProfileAnalysisService } from '../../../services/ProfileAnalysisService';
+import { CategorizationConfigService } from '../../../services/CategorizationConfigService';
+import { CategorizationUseCase } from '../../../usecases/CategorizationUseCase';
+import { Categorize } from '../../../controllers/Categorize';
 
 const router = Router();
 

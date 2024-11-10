@@ -1,4 +1,4 @@
-import { ICategorizationConfig } from 'contracts/entities/ICategorizationConfig';
+import { ICategorizationConfig } from '../../../contracts/entities/ICategorizationConfig';
 import { Schema, model } from 'mongoose';
 import { schemaOptions } from '../SchemaOptions';
 

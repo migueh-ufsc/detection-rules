@@ -1,4 +1,4 @@
-import { IProfileData } from 'contracts/entities/IProfileData';
+import { IProfileData } from '../../../contracts/entities/IProfileData';
 import { model, Schema } from 'mongoose';
 import { schemaOptions } from '../SchemaOptions';
 

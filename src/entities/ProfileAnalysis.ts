@@ -1,10 +1,10 @@
 import {
   AccountType,
   IProfileAnalysis,
-} from 'contracts/entities/IProfileAnalysis';
-import { IProfileData } from 'contracts/entities/IProfileData';
+} from '../contracts/entities/IProfileAnalysis';
+import { IProfileData } from '../contracts/entities/IProfileData';
 import { distance } from 'fastest-levenshtein';
-import { CategorizationConfigService } from 'services/CategorizationConfigService';
+import { CategorizationConfigService } from '../services/CategorizationConfigService';
 
 export class ProfileAnalysis implements IProfileAnalysis {
   _id: string;

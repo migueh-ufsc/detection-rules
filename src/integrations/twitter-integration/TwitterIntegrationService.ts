@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { HttpError } from 'common/errors/HttpError';
+import { HttpError } from '../../common/errors/HttpError';
 import { UserData } from './UserDataModel';
 import axios from 'axios';
-import { Config } from 'infra/config';
+import { Config } from '../../infra/config';
 
 export interface GetUserDataParams {
   username?: string;

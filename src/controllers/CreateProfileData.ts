@@ -1,8 +1,8 @@
-import { HttpRequest, HttpResponse } from 'contracts/server/Http';
+import { HttpRequest, HttpResponse } from '../contracts/server/Http';
 import { BaseController } from '../contracts/controllers/BaseController';
-import { GenerateProfileDataUseCase } from 'usecases/GenerateProfileDataUseCase';
-import { logger } from 'infra/logger';
-import { HttpError } from 'common/errors/HttpError';
+import { GenerateProfileDataUseCase } from '../usecases/GenerateProfileDataUseCase';
+import { logger } from '../infra/logger';
+import { HttpError } from '../common/errors/HttpError';
 
 export class CreateProfileData implements BaseController {
   constructor(readonly useCase: GenerateProfileDataUseCase) {}
