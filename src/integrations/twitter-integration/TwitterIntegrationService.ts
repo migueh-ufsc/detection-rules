@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { HttpError } from 'common/errors/HttpError';
 import { UserData } from './UserDataModel';
 import axios from 'axios';
@@ -12,7 +13,7 @@ export class TwitterIntegrationService {
     try {
       const params: GetUserDataParams = {};
       if (options.id) params.id = options.id;
-      if (options.username) params.username = options.id;
+      if (options.username) params.username = options.username;
 
       const userData = await axios.get<UserData>(
         `${Config.twitterIntegrationURL}/user`,

@@ -25,7 +25,7 @@ export class GenerateProfileAnalysisUseCase implements BaseUseCase {
         return geProfileAnalysis[0] as ProfileAnalysis;
 
       const profileAnalysis = new ProfileAnalysis({ profileData });
-
+      await profileAnalysis.generateAnalysis();
       await this.profileAnalysisService.create(profileAnalysis);
 
       return profileAnalysis;
