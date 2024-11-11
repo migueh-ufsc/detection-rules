@@ -11,6 +11,8 @@ export class CreateProfileAnalysis implements BaseController {
     try {
       const { params } = request;
       const { username } = params;
+      const { query } = request;
+      const { force } = query;
 
       if (!username)
         throw new HttpError({
@@ -18,7 +20,7 @@ export class CreateProfileAnalysis implements BaseController {
           message: 'Para gerar dados de análise é necessario um "username"',
         });
 
-      const analysis = await this.useCase.execute(username);
+      const analysis = await this.useCase.execute(username, !!force);
 
       return {
         status: 200,

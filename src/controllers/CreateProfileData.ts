@@ -9,9 +9,9 @@ export class CreateProfileData implements BaseController {
 
   async handle(request: HttpRequest): Promise<HttpResponse> {
     try {
-      const { query } = request;
-
-      if (!query.id && !query.username)
+      const { body } = request;
+      const { id, username, force } = body;
+      if (!id && !username)
         throw new HttpError({
           status: 400,
           message:
@@ -19,8 +19,9 @@ export class CreateProfileData implements BaseController {
         });
 
       const input = {
-        id: query.id as string,
-        username: query.username as string,
+        id: id as string,
+        username: username as string,
+        force: force as boolean,
       };
 
       const profileData = await this.useCase.execute(input);
