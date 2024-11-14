@@ -83,11 +83,8 @@ export class ProfileAnalysis implements IProfileAnalysis {
   }
 
   private calculateUniqueHashtagRatio(): number | null {
-    if (
-      this.profileData.timelineSampleFullSize === 0 ||
-      this.profileData.timelineSampleHashtagCount === 0
-    )
-      return null;
+    if (this.profileData.timelineSampleFullSize === 0) return null;
+    if (this.profileData.timelineSampleHashtagCount === 0) return 0;
 
     const totalHashtags = this.profileData.timelineSampleHashtagCount;
     const uniqueHashtags = Object.keys(this.profileData.hashtags).length;
@@ -96,11 +93,8 @@ export class ProfileAnalysis implements IProfileAnalysis {
   }
 
   private calculateUniqueMentionRatio(): number | null {
-    if (
-      this.profileData.timelineSampleFullSize === 0 ||
-      this.profileData.timelineSampleMentionCount === 0
-    )
-      return null; // não considera essa heurística para timelines vazias
+    if (this.profileData.timelineSampleFullSize === 0) return null; // não considera essa heurística para timelines vazias
+    if (this.profileData.timelineSampleMentionCount === 0) return 0;
 
     const totalMentions = this.profileData.timelineSampleMentionCount;
     const uniqueMentions = Object.keys(this.profileData.mentions).length;
@@ -125,17 +119,16 @@ export class ProfileAnalysis implements IProfileAnalysis {
     );
   }
 
-  private calculateTweetPerDay(): number | null {
-    if (this.profileData.nTweet === 0) return null; // desconsidera estatística se não houver tweets
+  private calculateTweetPerDay(): number {
     return Math.log1p(
       this.profileData.nTweet / this.profileData.accountAgeInDays,
     );
   }
 
-  private calculateAverageTimeBetweenTweets(): number | null {
+  private calculateAverageTimeBetweenTweets(): number {
     const { timelineSamplePostCreatedAtDates } = this.profileData;
 
-    if (timelineSamplePostCreatedAtDates.length <= 1) return null;
+    if (timelineSamplePostCreatedAtDates.length <= 1) return 0;
 
     const sortedDates = timelineSamplePostCreatedAtDates.sort(
       (a, b) => new Date(a).getTime() - new Date(b).getTime(),
